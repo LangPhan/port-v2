@@ -2,6 +2,8 @@ import { Inter } from 'next/font/google';
 import "./global.css";
 
 import { i18n, type Locale } from "../../i18n-config";
+import Navbar from './components/Navbar';
+import { ThemeProvider } from './components/theme-provider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -22,7 +24,19 @@ export default async function Root({
   const { lang } = await params;
   return (
     <html lang={lang}>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}
+        suppressHydrationWarning={false}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

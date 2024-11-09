@@ -73,3 +73,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .container {
+    @apply w-full max-w-[1400px];
+  }
+}
