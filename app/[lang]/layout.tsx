@@ -1,6 +1,12 @@
+import { Inter } from 'next/font/google';
 import "./global.css";
 
 import { i18n, type Locale } from "../../i18n-config";
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter'
+})
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -16,7 +22,7 @@ export default async function Root({
   const { lang } = await params;
   return (
     <html lang={lang}>
-      <body>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
