@@ -1,6 +1,9 @@
 {
+  "navbar": {
+    "brand": "Lãng"
+  },
   "server-component": {
-    "welcome": "Vítejte"
+    "welcome": "Xin Chào"
   },
   "counter": {
     "increment": "Přidat",

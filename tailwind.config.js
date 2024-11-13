@@ -52,6 +52,18 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      difficulty: {
+        beginner: "hsl(var(--difficulty-beginner))",
+        easy: "hsl(var(--difficulty-easy))",
+        medium: "hsl(var(--difficulty-medium))",
+        hard: "hsl(var(--difficulty-hard))",
+        extreme: "hsl(var(--difficulty-extreme))",
+        'beginner-dark': "hsl(var(--difficulty-beginner-dark))",
+        'easy-dark': "hsl(var(--difficulty-easy-dark))",
+        'medium-dark': "hsl(var(--difficulty-medium-dark))",
+        'hard-dark': "hsl(var(--difficulty-hard-dark))",
+        'extreme-dark': "hsl(var(--difficulty-extreme-dark))",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -66,10 +78,21 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        spotlight: {
+          "0%": {
+            opacity: 0,
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        spotlight: "spotlight 2s ease .75s 1 forwards",
       },
     },
   },

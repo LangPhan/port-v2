@@ -22,8 +22,9 @@ export default async function Root({
   params: { lang: Locale };
 }) {
   const { lang } = await params;
+
   return (
-    <html lang={lang}>
+    <html lang={lang} suppressHydrationWarning>
       <body className={inter.className}
         suppressHydrationWarning={false}
       >
