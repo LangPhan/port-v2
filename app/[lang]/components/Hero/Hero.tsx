@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Avatar from "../../../../public/logo.png";
 import mainImage from "../../../../public/main.png";
+import secondImage from "../../../../public/main_2.png";
 import { BackgroundLines } from "../ui/background-lines";
 import { FlipWords } from "../ui/flip-words";
 import { GlareCard } from "../ui/glare-card";
@@ -13,7 +14,7 @@ const Hero = () => {
     "Full-stack",
   ];
   return (
-    <section className="relative w-full">
+    <section className="relative w-full overflow-hidden">
       <BackgroundLines className="bg-transparent">
         <Spotlight
           className="-top-40 left-0 md:left-42 md:-top-16"
@@ -21,14 +22,14 @@ const Hero = () => {
         />
         <div className="container flex justify-between items-center h-full">
           <div className="w-1/2 flex flex-col items-center">
-            <div className="flex items-center -translate-x-10">
+            <div className="flex items-center -translate-x-10 select-none">
               <Image
                 src={Avatar}
                 alt="avatar"
                 height={280}
                 width={280}
               />
-              <span className="animate-bg-gradient-to-center-title dark:to-69% select-none bg-gradient-to-br from-[#3178c6] from-[69%] to-black/0 bg-clip-text bg-right-bottom text-6xl font-extrabold text-transparent sm:text-6xl sm:leading-[4.5rem] dark:from-white dark:from-30% dark:via-[#3178c6] dark:to-[#3178c6] dark:bg-[length:300%_300%]">
+              <span className="bg-gradient-to-br from-slate-200 via-blue-500 to-blue-700 bg-clip-text text-transparent text-6xl font-extrabold  sm:text-6xl sm:leading-[4.5rem] animate-fade-in">
                 <h2>Hello. I'm a</h2>
                 <FlipWords
                   words={words}
@@ -47,7 +48,7 @@ const Hero = () => {
           <div className="relative w-1/2 flex items-center justify-center">
             <div className="absolute rotate-12 right-0 hover:translate-x-24 hover:rotate-0 transition-transform duration-500">
               <GlareCard>
-                <Image src={mainImage} alt="Main Image"
+                <Image src={secondImage} alt="Main Image"
                   className="-translate-y-1/4 shadow-2xl"
                 />
               </GlareCard>

@@ -88,11 +88,26 @@ module.exports = {
             transform: "translate(-50%,-40%) scale(1)",
           },
         },
+        fadeIn: {
+          "0%": {
+            opacity: 0
+          },
+          "50%": {
+            opacity: 0
+          },
+          "75%": {
+            opacity: 0.5
+          },
+          "100%": {
+            opacity: 1
+          }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         spotlight: "spotlight 2s ease .75s 1 forwards",
+        "fade-in": "fadeIn 3s ease"
       },
     },
   },
