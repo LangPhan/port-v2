@@ -13,12 +13,10 @@ export default async function IndexPage({
   params: { lang: Locale };
 }) {
   const { lang } = await params;
-
   const dictionary = await getDictionary(lang);
 
-
   return (
-    <div className="relative bg-background w-full select-none">
+    <div className="relative bg-background w-full">
       <div className="w-full absolute inset-0 h-full">
         <SparklesCore
           id="tsparticlesfullpage"
@@ -31,10 +29,10 @@ export default async function IndexPage({
           speed={0.2}
         />
       </div>
-      <Hero lang={lang} />
-      <Profile />
-      <Project />
-      <Contact />
+      <Hero dictionary={dictionary.hero} />
+      <Profile dictionary={dictionary.profile} />
+      <Project dictionary={dictionary.projects} />
+      <Contact dictionary={dictionary.contact} />
       <Footer />
     </div>
   );

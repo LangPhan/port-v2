@@ -11,7 +11,7 @@ interface TimelineEntry {
   content: React.ReactNode;
 }
 
-export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
+export const Timeline = ({ data, dictionary }: { data: TimelineEntry[], dictionary: any }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -38,7 +38,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     >
       <div className="w-full mx-auto pt-10">
         <h2 className="text-center text-lg font-bold md:text-4xl mb-4 text-black dark:text-white uppercase">
-          My projects
+          {dictionary.title}
         </h2>
       </div>
 

@@ -1,5 +1,3 @@
-import { getDictionary } from "get-dictionary";
-import { Locale } from "i18n-config";
 import { Compass } from "lucide-react";
 import Image from "next/image";
 import Avatar from "../../../../public/logo.png";
@@ -10,9 +8,8 @@ import { FlipWords } from "../ui/flip-words";
 import { GlareCard } from "../ui/glare-card";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 import { Spotlight } from "../ui/spotlight";
-const Hero = async ({ lang }: { lang: Locale }) => {
 
-  const dictionary = await getDictionary(lang);
+const Hero = ({ dictionary }: { dictionary: any }) => {
   const words = [
     "Front-end",
     "Back-end",
@@ -34,8 +31,8 @@ const Hero = async ({ lang }: { lang: Locale }) => {
                 height={280}
                 width={280}
               />
-              <span className="bg-gradient-to-br from-slate-200 via-blue-500 to-blue-700 bg-clip-text text-transparent text-6xl font-extrabold  sm:text-6xl sm:leading-[4.5rem] animate-fade-in">
-                <h2>Hello. I'm a</h2>
+              <span className="bg-gradient-to-br from-slate-200 via-blue-500 to-blue-700 bg-clip-text text-transparent text-6xl font-extrabold sm:text-6xl sm:leading-[4.5rem] animate-fade-in min-w-[500px]">
+                <h2>{dictionary.hello}</h2>
                 <FlipWords
                   words={words}
                   duration={1000}
@@ -47,7 +44,7 @@ const Hero = async ({ lang }: { lang: Locale }) => {
             <div className="flex justify-center items-center gap-4 w-full">
               <HoverBorderGradient className="flex gap-1 group py-3">
                 <Compass className="group-hover:rotate-180 transition-transform duration-500" />
-                <span>Start exploring</span>
+                <span>{dictionary.button}</span>
               </HoverBorderGradient>
             </div>
           </div>

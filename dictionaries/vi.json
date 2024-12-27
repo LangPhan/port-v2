@@ -2,11 +2,32 @@
   "navbar": {
     "brand": "Lãng"
   },
-  "server-component": {
-    "welcome": "Xin Chào"
+  "hero": {
+    "hello": "Xin chào. Tôi là",
+    "button": "Bắt đầu khám phá"
   },
-  "counter": {
-    "increment": "Přidat",
-    "decrement": "Ubrat"
+  "profile": {
+    "intro": "Xin chào, tôi là Đạt, một lập trình viên Front-end. Tôi thích tạo ra các ứng dụng web hấp dẫn về mặt hình ảnh và thân thiện với người dùng bằng HTML, CSS và JavaScript. Là một sinh viên mới tốt nghiệp, tôi rất hào hứng mang các kỹ năng kỹ thuật và tư duy giải quyết vấn đề của mình vào các dự án thực tế và phát triển trong ngành CNTT."
+  },
+  "projects": {
+    "title": "Dự án của tôi",
+    "h-tech": "Công nghệ",
+    "h-des": "Mô tả",
+    "project": {
+      "ai-shoe": "AI E-shoes Shop là một cửa hàng giày trực tuyến tích hợp trí tuệ nhân tạo để nâng cao trải nghiệm mua sắm của khách hàng. Trợ lý AI phân tích sở thích của khách hàng, chẳng hạn như kích cỡ giày, phong cách, loại hoạt động và các lần mua trước đây, để đề xuất các tùy chọn phù hợp nhất. Nền tảng này cũng cung cấp thử giày ảo, gợi ý cá nhân hóa và hỗ trợ khách hàng theo thời gian thực. Dự án này tập trung vào việc cải thiện sự hài lòng của khách hàng bằng cách giảm thời gian tìm kiếm sản phẩm phù hợp và tăng sự tự tin khi mua hàng.",
+      "tdtu-find": "TDTU FIND là một ứng dụng web được thiết kế để giúp sinh viên báo cáo và tìm lại các vật phẩm bị mất tại trường đại học. Nó cho phép người dùng đăng chi tiết về các vật phẩm bị mất hoặc tìm thấy, tạo ra một nền tảng có tổ chức và hợp lý để thu hồi nhanh chóng. Hệ thống có giao diện đơn giản, nơi sinh viên có thể mô tả các vật phẩm bị mất, tải lên hình ảnh và cung cấp thông tin liên hệ. Nền tảng này sẽ khớp các vật phẩm bị mất với các phát hiện tiềm năng và thông báo cho chủ sở hữu khi có sự trùng khớp.",
+      "richard": "RICHARD COPY WRITER là một ứng dụng web toàn diện được thiết kế để giới thiệu các khóa học liên quan đến spa và cung cấp chương trình tiếp thị liên kết. Nền tảng này cho phép người dùng duyệt qua thông tin chi tiết về các khóa học spa khác nhau, đăng ký chương trình liên kết để quảng bá các khóa học và đăng ký tài khoản để mua và học các khóa học spa thông qua các video hướng dẫn. Trang web cung cấp trải nghiệm người dùng liền mạch, bao gồm mua khóa học, phát video và theo dõi liên kết để khuyến khích sự tham gia và học tập của người dùng.",
+      "drink-shop": "Drink Water Shop là một ứng dụng web được thiết kế để cho phép người dùng duyệt, chọn và mua các loại sản phẩm nước khác nhau. Nền tảng này cung cấp trải nghiệm mua sắm thân thiện với người dùng, bao gồm các bộ lọc sản phẩm, quản lý giỏ hàng và các tùy chọn thanh toán trực tuyến. Đối với quản trị viên, hệ thống bao gồm một bảng điều khiển quản lý nơi họ có thể theo dõi hàng tồn kho, quản lý sản phẩm nước và giám sát các hoạt động của nhân viên như thực hiện đơn hàng và dịch vụ khách hàng. Nền tảng này cũng tạo ra các báo cáo để giúp quản trị viên giám sát doanh số bán hàng và mức tồn kho.",
+      "app-marketplace": "App and Game Marketplace là một nền tảng thương mại điện tử cho phép người dùng khám phá, mua và tải xuống nhiều ứng dụng và trò chơi khác nhau. Nền tảng này bao gồm các tính năng như bộ lọc tìm kiếm, đề xuất sản phẩm, đánh giá của người dùng và cổng thanh toán an toàn. Người dùng đã đăng ký có thể đăng ký làm thành viên để đăng, quản lý và bán trò chơi của riêng họ trên nền tảng, với quyền truy cập vào bảng điều khiển cá nhân để theo dõi lượt tải xuống, doanh số bán hàng và đánh giá. Quản trị viên có các công cụ để quản lý nội dung, giám sát giao dịch và đảm bảo chất lượng của thị trường."
+    }
+  },
+  "contact": {
+    "title": "liên hệ với tôi",
+    "firstName": "Tên",
+    "lastName": "Họ",
+    "email": "Địa chỉ email",
+    "content": "Nội dung",
+    "content-place": "Nói gì đó với tôi...",
+    "button": "Liên hệ ngay"
   }
 }
