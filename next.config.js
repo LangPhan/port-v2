@@ -1,3 +1,4 @@
+
 module.exports = {
   typescript: {
     ignoreBuildErrors: true,
@@ -14,6 +15,16 @@ module.exports = {
         hostname: 'img.icons8.com',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'assets.aceternity.com',
+        port: ''
+      },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        port: ''
+      }
     ],
   },
 }

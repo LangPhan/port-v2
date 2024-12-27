@@ -1,3 +1,6 @@
+import { getDictionary } from "get-dictionary";
+import { Locale } from "i18n-config";
+import { Compass } from "lucide-react";
 import Image from "next/image";
 import Avatar from "../../../../public/logo.png";
 import mainImage from "../../../../public/main.png";
@@ -7,7 +10,9 @@ import { FlipWords } from "../ui/flip-words";
 import { GlareCard } from "../ui/glare-card";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 import { Spotlight } from "../ui/spotlight";
-const Hero = () => {
+const Hero = async ({ lang }: { lang: Locale }) => {
+
+  const dictionary = await getDictionary(lang);
   const words = [
     "Front-end",
     "Back-end",
@@ -39,9 +44,10 @@ const Hero = () => {
                 <h2>Developer</h2>
               </span>
             </div>
-            <div className="flex justify-start w-full">
-              <HoverBorderGradient>
-                <span>Follow Me</span>
+            <div className="flex justify-center items-center gap-4 w-full">
+              <HoverBorderGradient className="flex gap-1 group py-3">
+                <Compass className="group-hover:rotate-180 transition-transform duration-500" />
+                <span>Start exploring</span>
               </HoverBorderGradient>
             </div>
           </div>
@@ -52,7 +58,6 @@ const Hero = () => {
                   className="-translate-y-1/4 shadow-2xl"
                 />
               </GlareCard>
-
             </div>
             <div className="-rotate-12 hover:rotate-0 transition-transform duration-500">
               <GlareCard>
@@ -60,7 +65,6 @@ const Hero = () => {
                   className="-translate-y-1/4 shadow-2xl"
                 />
               </GlareCard>
-
             </div>
           </div>
         </div>

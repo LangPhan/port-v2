@@ -34,7 +34,7 @@ export default async function Root({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          <Navbar lang={lang} />
           {children}
         </ThemeProvider>
       </body>
