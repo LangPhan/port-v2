@@ -38,7 +38,7 @@ const Profile = ({ dictionary }: { dictionary: any }) => {
     "figma",
   ];
   return (
-    <section className="h-screen container">
+    <section id="profile" className="h-screen container mt-24">
       <TextGenerateEffect words={words} />
       <IconCloud iconSlugs={slugs} />
     </section>

@@ -16,7 +16,7 @@ export default async function IndexPage({
   const dictionary = await getDictionary(lang);
 
   return (
-    <div className="relative bg-background w-full">
+    <div className="relative bg-background w-full select-none scroll-smooth">
       <div className="w-full absolute inset-0 h-full">
         <SparklesCore
           id="tsparticlesfullpage"

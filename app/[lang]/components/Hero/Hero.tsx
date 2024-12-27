@@ -1,5 +1,6 @@
 import { Compass } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Avatar from "../../../../public/logo.png";
 import mainImage from "../../../../public/main.png";
 import secondImage from "../../../../public/main_2.png";
@@ -23,15 +24,16 @@ const Hero = ({ dictionary }: { dictionary: any }) => {
           fill="white"
         />
         <div className="container flex justify-between items-center h-full">
-          <div className="w-1/2 flex flex-col items-center">
-            <div className="flex items-center -translate-x-10 select-none">
+          <div className="w-full xl:w-1/2 flex flex-col items-center">
+            <div className="flex items-center xl:-translate-x-10 select-none">
               <Image
+                className="w-1/2 md:w-full"
                 src={Avatar}
                 alt="avatar"
                 height={280}
                 width={280}
               />
-              <span className="bg-gradient-to-br from-slate-200 via-blue-500 to-blue-700 bg-clip-text text-transparent text-6xl font-extrabold sm:text-6xl sm:leading-[4.5rem] animate-fade-in min-w-[500px]">
+              <span className="bg-gradient-to-br from-slate-200 via-blue-500 to-blue-700 bg-clip-text text-transparent md:text-6xl font-extrabold text-4xl md:leading-[4.5rem] animate-fade-in md:min-w-[500px]">
                 <h2>{dictionary.hello}</h2>
                 <FlipWords
                   words={words}
@@ -42,13 +44,15 @@ const Hero = ({ dictionary }: { dictionary: any }) => {
               </span>
             </div>
             <div className="flex justify-center items-center gap-4 w-full">
-              <HoverBorderGradient className="flex gap-1 group py-3">
-                <Compass className="group-hover:rotate-180 transition-transform duration-500" />
-                <span>{dictionary.button}</span>
-              </HoverBorderGradient>
+              <Link href={"#profile"}>
+                <HoverBorderGradient className="flex gap-1 group py-3">
+                  <Compass className="group-hover:rotate-180 transition-transform duration-500" />
+                  <span>{dictionary.button}</span>
+                </HoverBorderGradient>
+              </Link>
             </div>
           </div>
-          <div className="relative w-1/2 flex items-center justify-center">
+          <div className="relative w-full md:w-1/2 hidden xl:flex items-center justify-center">
             <div className="absolute rotate-12 right-0 hover:translate-x-24 hover:rotate-0 transition-transform duration-500">
               <GlareCard>
                 <Image src={secondImage} alt="Main Image"

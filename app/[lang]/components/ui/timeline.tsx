@@ -37,7 +37,7 @@ export const Timeline = ({ data, dictionary }: { data: TimelineEntry[], dictiona
       ref={containerRef}
     >
       <div className="w-full mx-auto pt-10">
-        <h2 className="text-center text-lg font-bold md:text-4xl mb-4 text-black dark:text-white uppercase">
+        <h2 className="text-center text-2xl font-bold md:text-4xl mb-4 text-black dark:text-white uppercase">
           {dictionary.title}
         </h2>
       </div>

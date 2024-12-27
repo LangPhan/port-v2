@@ -11,20 +11,21 @@ const Content = ({ techs, description, image }: Props) => {
   return (
     <div>
       <div>
-        <h3 className="text-2xl">Tech stacks</h3>
+        <h3 className="text-lg md:text-2xl">Tech stacks</h3>
         <div className='flex gap-1 my-2 ml-2'>
           {techs && techs.map((tech, index) => {
             return (
               <StackIcon
                 key={index}
-                className='size-10 bg-white px-2 rounded-full hover:scale-110 hover:transition-transform'
-                name={tech} />
+                className='size-8 md:size-10 bg-white px-2 rounded-full hover:scale-110 hover:transition-transform'
+                name={tech}
+              />
             )
           })}
         </div>
       </div>
       <div>
-        <h3 className="text-2xl">Description</h3>
+        <h3 className="text-lg md:text-2xl">Description</h3>
         <p className='my-2 ml-2'>
           {description}
         </p>

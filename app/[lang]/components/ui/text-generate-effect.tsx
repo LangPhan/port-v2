@@ -55,7 +55,7 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("font-bold", className)}>
       <div className="mt-4">
-        <motion.div className="dark:text-white text-black text-2xl leading-snug tracking-wide"
+        <motion.div className="dark:text-white text-black text-lg text-center md:text-2xl md:text-left md:leading-snug tracking-wide"
           initial={{
             opacity: 0,
             y: -50,
