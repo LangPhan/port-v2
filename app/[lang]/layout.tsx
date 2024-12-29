@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google';
 import "./global.css";
+import {Analytics} from '@vercel/analytics/next';
 
 import { i18n, type Locale } from "../../i18n-config";
 import Navbar from './components/Navbar';
@@ -36,6 +37,7 @@ export default async function Root({
         >
           <Navbar lang={lang} />
           {children}
+	<Analytics/>
         </ThemeProvider>
       </body>
     </html>
