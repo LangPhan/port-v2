@@ -24,16 +24,16 @@ const Hero = ({ dictionary }: { dictionary: any }) => {
           fill="white"
         />
         <div className="container flex justify-between items-center h-full">
-          <div className="w-full xl:w-1/2 flex flex-col items-center">
-            <div className="flex items-center xl:-translate-x-10 select-none">
+          <div className="w-full xl:w-1/2 flex flex-col items-center gap-5">
+            <div className="flex flex-col xl:flex-row items-center xl:-translate-x-10 select-none">
               <Image
-                className="w-1/2 md:w-full"
+                className="hidden w-1/2 md:w-full md:block"
                 src={Avatar}
                 alt="avatar"
                 height={280}
                 width={280}
               />
-              <span className="bg-gradient-to-br from-slate-200 via-blue-500 to-blue-700 bg-clip-text text-transparent md:text-6xl font-extrabold text-4xl md:leading-[4.5rem] animate-fade-in md:min-w-[500px]">
+              <span className="bg-gradient-to-br from-slate-200 via-blue-500 to-blue-700 bg-clip-text text-transparent md:text-6xl font-extrabold text-3xl text-center md:text-left md:leading-[4.5rem] animate-fade-in md:min-w-[500px]">
                 <h2>{dictionary.hello}</h2>
                 <FlipWords
                   words={words}
