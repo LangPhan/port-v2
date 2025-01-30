@@ -26,6 +26,7 @@ const Project = ({ dictionary }: { dictionary: any }) => {
           techs={["nextjs", "reactjs", "tailwindcss"]}
           description={dictionary.project["kada"]}
           image={KADA}
+          visitUrl="https://kada.vn"
         />
       ),
     },
@@ -71,6 +72,7 @@ const Project = ({ dictionary }: { dictionary: any }) => {
       ),
     },
   ];
+
   return (
     <section>
       <Timeline data={data} dictionary={dictionary} />

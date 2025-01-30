@@ -13,6 +13,8 @@ type Props = {
 }
 
 const Content = ({ techs, description, image, demoUrl, visitUrl }: Props) => {
+  console.log(visitUrl);
+
   return (
     <div>
       <div>
@@ -52,9 +54,11 @@ const Content = ({ techs, description, image, demoUrl, visitUrl }: Props) => {
           </Link>
         )}
         {
+
           visitUrl && (
             <Link
               href={visitUrl}
+              target='_blank'
             >
               <Button variant={"outline"} className='flex justify-center items-center gap-0.5'><span>Visit</span> <ExternalLink /></Button>
 
