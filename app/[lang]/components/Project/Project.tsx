@@ -1,5 +1,6 @@
 import APPSHOP from "../../../../public/appstore.png";
 import DRINKSHOP from "../../../../public/drinkshop.png";
+import KADA from "../../../../public/kada.png";
 import RICHARD from "../../../../public/richard.png";
 import SHOEAI from '../../../../public/shoeAI.png';
 import TDTUFIND from "../../../../public/tdtufind.png";
@@ -18,6 +19,17 @@ const Project = ({ dictionary }: { dictionary: any }) => {
         />
       ),
     },
+    {
+      title: "KADA HomePage",
+      content: (
+        <Content
+          techs={["nextjs", "reactjs", "tailwindcss"]}
+          description={dictionary.project["kada"]}
+          image={KADA}
+        />
+      ),
+    },
+
     {
       title: "TDTU FIND",
       content: (
