@@ -1,73 +1,106 @@
-import { ExternalLink, PlayCircleIcon } from 'lucide-react';
-import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
-import StackIcon from 'tech-stack-icons';
-import { Button } from '../ui/button';
+import Image from "next/image";
+import { ArrowUpRight, Plus } from "lucide-react";
+import type { Dictionary } from "../../../../get-dictionary";
+import type { PortfolioProject } from "./projects";
 
 type Props = {
-  techs: string[],
-  description: string,
-  image: StaticImageData
-  demoUrl?: string,
-  visitUrl?: string,
-}
-
-const Content = ({ techs, description, image, demoUrl, visitUrl }: Props) => {
-  console.log(visitUrl);
-
+  project: PortfolioProject;
+  dictionary: Dictionary["projects"];
+  featured?: boolean;
+  index: number;
+};
+export default function Content({
+  project,
+  dictionary,
+  featured = false,
+  index,
+}: Props) {
+  const copy = dictionary.items[project.id];
   return (
-    <div>
-      <div>
-        <h3 className="text-lg md:text-2xl">Tech stacks</h3>
-        <div className='flex flex-wrap gap-1 my-2 ml-2'>
-          {techs && techs.map((tech, index) => {
-            return (
-              <StackIcon
-                key={index}
-                className='flex flex-shrink-0 size-8 md:size-10 bg-white px-2 rounded-full hover:scale-110 hover:transition-transform'
-                name={tech}
-              />
-            )
-          })}
+    <article
+      id={`project-${project.id}`}
+      tabIndex={-1}
+      className={`project-card${featured ? " project-card-lead" : ""}`}
+      aria-labelledby={`title-${project.id}`}
+    >
+      <div className="project-image">
+        <Image
+          src={project.image}
+          alt={`${dictionary.preview} — ${project.title}`}
+          sizes={
+            featured
+              ? "(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) 55vw, 660px"
+              : "(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) 45vw, 570px"
+          }
+          placeholder="blur"
+        />
+        <span className="project-number" aria-hidden="true">
+          0{index + 1}
+        </span>
+      </div>
+      <div className="project-copy">
+        <p className="eyebrow">{copy.category}</p>
+        <h3 id={`title-${project.id}`}>{project.title}</h3>
+        {copy.role && <p className="project-role">{copy.role}</p>}
+        <p className="project-summary">{copy.summary}</p>
+        <ul className="tech-tags" aria-label={dictionary.tech}>
+          {project.technologies.slice(0, 3).map((tech) => (
+            <li key={tech}>{tech}</li>
+          ))}
+        </ul>
+        <details className="project-details">
+          <summary>
+            {dictionary.details}
+            <span className="sr-only"> — {project.title}</span>
+            <Plus size={17} aria-hidden="true" />
+          </summary>
+          <dl>
+            <div>
+              <dt>{dictionary.problem}</dt>
+              <dd>{copy.problem}</dd>
+            </div>
+            <div>
+              <dt>{dictionary.scope}</dt>
+              <dd>{copy.scope}</dd>
+            </div>
+            {copy.contribution && (
+              <div>
+                <dt>{dictionary.contribution}</dt>
+                <dd>{copy.contribution}</dd>
+              </div>
+            )}
+            <div>
+              <dt>{dictionary.tech}</dt>
+              <dd>{project.technologies.join(" · ")}</dd>
+            </div>
+          </dl>
+        </details>
+        <div className="project-links">
+          {[
+            { href: project.website, label: dictionary.visit },
+            { href: project.repository, label: dictionary.repository },
+            { href: project.video, label: dictionary.video },
+          ].map(
+            ({ href, label }) =>
+              href && (
+                <a
+                  key={href}
+                  className="text-link project-visit"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {label}
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                  <span className="sr-only">
+                    {" "}
+                    — {project.title}, {dictionary.external}
+                  </span>
+                </a>
+              ),
+          )}
         </div>
       </div>
-      <div>
-        <h3 className="text-lg md:text-2xl">Description</h3>
-        <p className='my-2 ml-2'>
-          {description}
-        </p>
-      </div>
-      <div className="w-full h-full my-5">
-        <Image
-          src={image}
-          alt="hero template"
-          width={1674}
-          height={960}
-          loading='lazy'
-          className="rounded-lg object-cover  w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-        />
-      </div>
-      <div className='w-full flex gap-1'>
-        {demoUrl && (
-          <Link href={demoUrl}>
-            <Button variant={"destructive"} className='flex justify-center items-center gap-0.5'><span>Demo</span> <PlayCircleIcon className='translate-y-[1px]' /> </Button>
-          </Link>
-        )}
-        {
-
-          visitUrl && (
-            <Link
-              href={visitUrl}
-              target='_blank'
-            >
-              <Button variant={"outline"} className='flex justify-center items-center gap-0.5'><span>Visit</span> <ExternalLink /></Button>
-
-            </Link>
-          )
-        }
-      </div>
-    </div>
-  )
+    </article>
+  );
 }
-
-export default Content

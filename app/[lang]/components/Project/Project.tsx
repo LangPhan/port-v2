@@ -1,83 +1,56 @@
-import APPSHOP from "../../../../public/appstore.png";
-import DRINKSHOP from "../../../../public/drinkshop.png";
-import KADA from "../../../../public/kada.png";
-import RICHARD from "../../../../public/richard.png";
-import SHOEAI from '../../../../public/shoeAI.png';
-import TDTUFIND from "../../../../public/tdtufind.png";
-import { Timeline } from '../ui/timeline';
-import Content from './Content';
+import { Plus } from "lucide-react";
+import type { Dictionary } from "../../../../get-dictionary";
+import Content from "./Content";
+import { projects } from "./projects";
 
-const Project = ({ dictionary }: { dictionary: any }) => {
-  const data = [
-    {
-      title: "AI E-shoes Shop",
-      content: (
-        <Content
-          techs={["spring", "aws", "openai", "mysql", "reactjs", "tailwindcss", "shadcnui", "reactquery", "reactrouter"]}
-          description={dictionary.project["ai-shoe"]}
-          image={SHOEAI}
-        />
-      ),
-    },
-    {
-      title: "KADA HomePage",
-      content: (
-        <Content
-          techs={["nextjs", "reactjs", "tailwindcss"]}
-          description={dictionary.project["kada"]}
-          image={KADA}
-          visitUrl="https://kada.vn"
-        />
-      ),
-    },
-
-    {
-      title: "TDTU FIND",
-      content: (
-        <Content
-          techs={["nodejs", "mongodb", "cloudinary", "reactjs", "tailwindcss", "shadcnui"]}
-          description={dictionary.project["tdtu-find"]}
-          image={TDTUFIND}
-        />
-      ),
-    },
-    {
-      title: "Richard Tran Copywriter",
-      content: (
-        <Content
-          techs={["wordpress"]}
-          description={dictionary.project["richard"]}
-          image={RICHARD}
-        />
-      ),
-    },
-    {
-      title: "Drink water shop",
-      content: (
-        <Content
-          techs={["spring", "mysql", "html5", "css3", "bootstrap4"]}
-          description={dictionary.project["drink-shop"]}
-          image={DRINKSHOP}
-        />
-      ),
-    },
-    {
-      title: "App and Game Marketplace",
-      content: (
-        <Content
-          techs={["php", "mysql", "html5", "css3", "bootstrap4"]}
-          description={dictionary.project["app-marketplace"]}
-          image={APPSHOP}
-        />
-      ),
-    },
-  ];
-
+export default function Project({
+  dictionary,
+}: {
+  dictionary: Dictionary["projects"];
+}) {
   return (
-    <section>
-      <Timeline data={data} dictionary={dictionary} />
+    <section
+      id="projects"
+      tabIndex={-1}
+      className="section projects-section"
+      aria-labelledby="projects-title"
+    >
+      <div className="shell">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">{dictionary.eyebrow}</p>
+            <h2 id="projects-title">{dictionary.title}</h2>
+          </div>
+          <p className="section-description">{dictionary.intro}</p>
+        </div>
+        <div className="projects-grid" aria-label={dictionary.featured}>
+          {projects.slice(0, 3).map((project, index) => (
+            <Content
+              key={project.id}
+              project={project}
+              dictionary={dictionary}
+              featured={index === 0}
+              index={index}
+            />
+          ))}
+        </div>
+        <details className="more-projects">
+          <summary>
+            {dictionary.more}
+            <Plus size={18} aria-hidden="true" />
+          </summary>
+          <div className="projects-grid secondary-projects">
+            {projects.slice(3).map((project, index) => (
+              <Content
+                key={project.id}
+                project={project}
+                dictionary={dictionary}
+                index={index + 3}
+              />
+            ))}
+          </div>
+        </details>
+      </div>
     </section>
-  )
+  );
 }
-
-export default Project

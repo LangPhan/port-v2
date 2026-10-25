@@ -1,34 +1,129 @@
 {
+  "meta": {
+    "title": "Phan Văn Đạt — Front-end Developer",
+    "description": "Phan Văn Đạt's portfolio: web interfaces with React, Next.js and TypeScript. Explore selected projects and get in touch."
+  },
   "navbar": {
-    "brand": "David"
-  },
-  "hero": {
-    "hello": "Hello. I'm a",
-    "button": "Start exploring"
-  },
-  "profile": {
-    "intro": "Hi, I'm Dat, a passionate front-end developer with a background in Computer Networking. I love creating visually engaging and user-friendly web applications using HTML, CSS, and JavaScript. As a recent graduate, I'm excited to bring my technical skills and problem-solving mindset to real-world projects and grow in the IT industry."
-  },
-  "projects": {
-    "title": "My projects",
-    "h-tech": "Tech Stacks",
-    "h-des": "Description",
-    "project": {
-      "ai-shoe": "AI E-shoes Shop is an online shoe store that integrates artificial intelligence to enhance the customer shopping experience. The AI assistant analyzes customer preferences, such as shoe size, style, activity type, and past purchases, to recommend the most suitable options. The platform also offers virtual shoe fitting, personalized suggestions, and real-time customer assistance. This project focuses on improving customer satisfaction by reducing the time spent searching for the right product and increasing purchase confidence.",
-      "kada": "I designed and built an elegant and user-friendly homepage for KADA, with a focus on providing a clear overview of the company’s offerings. The website features sections about the company’s background, key products, and services. A contact form was also integrated to capture guest information, allowing for easy communication and inquiries from potential clients.",
-      "tdtu-find": "TDTU FIND is a web-based application designed to help students report and recover lost items at the university. It allows users to post details about lost or found items, creating a streamlined and organized platform for quick retrieval. The system features a simple interface where students can describe the lost items, upload images, and provide contact information. The platform matches lost items with potential findings, notifying the owners when a match occurs.",
-      "richard": "RICHARD COPY WRITER is a comprehensive web application designed to introduce spa-related courses and offer an affiliate marketing program. The platform allows users to browse through detailed information about various spa courses, enroll in the affiliate program to promote courses, and register for an account to purchase and study spa courses via video tutorials. The website features a seamless user experience, including course purchasing, video streaming, and affiliate tracking to encourage user participation and learning.",
-      "drink-shop": "Drink Water Shop is a web-based application designed to allow users to browse, select, and purchase different types of water products. The platform features a user-friendly shopping experience, including product filters, cart management, and online payment options. For administrators, the system includes a management dashboard where they can track inventory, manage water products, and oversee employee activities such as order fulfillment and customer service. The platform also generates reports to help admins monitor sales and stock levels.",
-      "app-marketplace": "App and Game Marketplace is an e-commerce platform that allows users to explore, purchase, and download a variety of apps and games. The platform includes features like search filters, product recommendations, user reviews, and secure payment gateways. Registered users can sign up as members to post, manage, and sell their own games on the platform, with access to a personalized dashboard for tracking downloads, sales, and reviews. Admins have tools to manage content, monitor transactions, and ensure marketplace quality."
+    "home": "Back to top",
+    "navigation": "Main navigation",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "language": "Language",
+    "skip": "Skip to main content",
+    "theme": {
+      "light": "Pull the cord to switch to light mode",
+      "dark": "Pull the cord to switch to dark mode"
     }
   },
+  "hero": {
+    "eyebrow": "THOUGHTFUL DESIGN. CLEAR EXPERIENCES.",
+    "description": "I build easy-to-use web interfaces, paying attention to every detail from layout to interaction.",
+    "projects": "View projects",
+    "contact": "Get in touch",
+    "portrait": "From ideas to interfaces",
+    "explore": "Explore selected work"
+  },
+  "profile": {
+    "eyebrow": "ABOUT & SKILLS",
+    "title": "Good interfaces start with people.",
+    "intro": "I'm Dat, a front-end developer. I enjoy turning ideas into clear, approachable web applications with HTML, CSS, JavaScript and the React ecosystem.",
+    "evidence": "See these skills in practice",
+    "skills": [
+      {
+        "title": "Web interfaces",
+        "tools": "React · Next.js · TypeScript · Tailwind CSS",
+        "project": "project-kada",
+        "evidence": "Explore the KADA website"
+      },
+      {
+        "title": "Applications & data",
+        "tools": "Node.js · MongoDB · Cloudinary",
+        "project": "project-tdtu-find",
+        "evidence": "Explore TDTU FIND"
+      },
+      {
+        "title": "E-commerce",
+        "tools": "React · Tailwind CSS · TanStack Query",
+        "project": "project-ai-shoe",
+        "evidence": "Explore AI E-shoes Shop"
+      }
+    ]
+  },
+  "projects": {
+    "eyebrow": "SELECTED WORK",
+    "title": "Ideas into products.",
+    "intro": "A selection of business websites, e-commerce experiences and community applications.",
+    "featured": "Featured projects",
+    "more": "View 3 more projects",
+    "details": "Explore project",
+    "visit": "Visit website",
+    "external": "opens in a new tab",
+    "tech": "Technology",
+    "problem": "The challenge",
+    "scope": "Project scope",
+    "contribution": "My contribution",
+    "preview": "Interface preview",
+    "items": {
+      "kada": {
+        "category": "BUSINESS WEBSITE",
+        "summary": "A clear introduction to KADA's products and services, helping visitors find information and send enquiries.",
+        "problem": "Present the company, products and services through an approachable homepage.",
+        "scope": "Company introduction, product and service sections, and a contact form.",
+        "contribution": "Designed and built the homepage and integrated the contact form.",
+        "role": "Design & Frontend"
+      },
+      "ai-shoe": {
+        "category": "E-COMMERCE",
+        "summary": "An online shoe store combining product discovery with an AI-powered recommendation assistant.",
+        "problem": "Help shoppers find suitable products in an online shoe catalogue.",
+        "scope": "Storefront, product discovery and an assistant for shopping recommendations.",
+        "contribution": "Responsible for the React frontend of the online shoe store.",
+        "role": "Frontend"
+      },
+      "tdtu-find": {
+        "category": "COMMUNITY APPLICATION",
+        "summary": "A lost-and-found application for students, with item listings, photos and contact information.",
+        "problem": "Connect students who have lost items with people who have found them.",
+        "scope": "Lost-and-found listings, item descriptions, images and contact details.",
+        "contribution": "Responsible for both the frontend and backend of the lost-and-found application.",
+        "role": "Frontend & Backend"
+      },
+      "richard": {
+        "category": "CONTENT PLATFORM",
+        "summary": "A spa course website bringing together video learning and an affiliate programme.",
+        "problem": "Bring course information and the learning journey together on one website.",
+        "scope": "Course discovery, student accounts, videos and an affiliate programme.",
+        "contribution": "",
+        "role": ""
+      },
+      "drink-shop": {
+        "category": "E-COMMERCE",
+        "summary": "An online water shop with a product catalogue, shopping cart and store management area.",
+        "problem": "Connect the shopping experience with product and order management.",
+        "scope": "Product catalogue, cart, inventory, orders and sales reports.",
+        "contribution": "",
+        "role": ""
+      },
+      "app-marketplace": {
+        "category": "DIGITAL PRODUCTS",
+        "summary": "An app and game marketplace with discovery, purchasing, downloads and seller product management.",
+        "problem": "Bring discovery and distribution of applications and games into one space.",
+        "scope": "Digital product catalogue, search, reviews and seller management.",
+        "contribution": "",
+        "role": ""
+      }
+    },
+    "repository": "View source",
+    "video": "Watch demo"
+  },
   "contact": {
-    "title": "contact to me",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "email": "Email Address",
-    "content": "Content",
-    "content-place": "Say something to me...",
-    "button": "Contact Now"
+    "eyebrow": "START A CONVERSATION",
+    "title": "Let's build something thoughtful.",
+    "description": "Have an idea, an opportunity to collaborate or a project to discuss? Send me an email.",
+    "hint": "Open your email app, or copy the address above."
+  },
+  "footer": {
+    "top": "Back to top"
   }
 }

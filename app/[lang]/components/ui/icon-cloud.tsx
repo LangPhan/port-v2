@@ -33,7 +33,7 @@ export const cloudProps: Omit<ICloud, "children"> = {
     outlineColour: "#0000",
     maxSpeed: 0.04,
     minSpeed: 0.02,
-    dragControl: true
+    dragControl: true,
   },
 };
 
@@ -79,10 +79,5 @@ export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
     );
   }, [data, theme]);
 
-  return (
-    // @ts-ignore
-    <Cloud {...cloudProps}>
-      <>{renderedIcons}</>
-    </Cloud>
-  );
+  return <Cloud {...cloudProps}>{renderedIcons ?? []}</Cloud>;
 }

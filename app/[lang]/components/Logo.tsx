@@ -1,17 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
-import logoImage from "../../../public/logo.png";
+import logo from "../../../public/logo.png";
+import { site } from "../../../site-config";
 
-const Logo = ({ brand }: { brand: string }) => {
+export default function Logo({ label }: { label: string }) {
   return (
-    <Link
-      href={""}
-      className="flex items-center gap-1">
-      <Image src={logoImage} alt="Logo" width={58} height={58} loading="eager" priority />
-      <span className="uppercase font-bold ">{brand}</span>
-    </Link>
-
-  )
+    <a href="#top" className="brand" aria-label={`${site.name} — ${label}`}>
+      <Image src={logo} alt="" width={40} height={40} sizes="40px" />
+      <span>{site.name}</span>
+    </a>
+  );
 }
-
-export default Logo 

@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-25",
+  "target": "http://localhost:3010/vi",
+  "baselineCommit": "e036f80",
+  "scope": "Local production builds; simulated mobile, not field Core Web Vitals.",
+  "settings": {
+    "version": "13.5.0",
+    "formFactor": "mobile",
+    "throttling": {
+      "rttMs": 150,
+      "throughputKbps": 1638.4,
+      "requestLatencyMs": 562.5,
+      "downloadThroughputKbps": 1474.5600000000002,
+      "uploadThroughputKbps": 675,
+      "cpuSlowdownMultiplier": 4
+    },
+    "screenEmulation": {
+      "mobile": true,
+      "width": 412,
+      "height": 823,
+      "deviceScaleFactor": 1.75,
+      "disabled": false
+    },
+    "categories": [
+      "performance",
+      "accessibility",
+      "best-practices",
+      "seo"
+    ]
+  },
+  "before": {
+    "runs": [
+      {
+        "path": ".reports/before-1.json",
+        "sha256": "02c86b347454b8876306a8ccc364a974f83fb4e5c3738fdc6836480a33b40d26",
+        "fetchTime": "2026-10-25T12:57:15.957Z",
+        "scores": {
+          "performance": 42,
+          "accessibility": 94,
+          "best-practices": 96,
+          "seo": 91
+        },
+        "lcpMs": 7435.0707,
+        "cls": 0,
+        "tbtMs": 5761.500000000001,
+        "transferBytes": 755869,
+        "fontBytes": 144885
+      },
+      {
+        "path": ".reports/before-2.json",
+        "sha256": "474a9a3938f98cb8ebf87202deeab6c143c7e9807600e5ad0463deff4b55f4f9",
+        "fetchTime": "2026-10-25T12:54:35.031Z",
+        "scores": {
+          "performance": 42,
+          "accessibility": 94,
+          "best-practices": 96,
+          "seo": 91
+        },
+        "lcpMs": 7287.9815,
+        "cls": 0,
+        "tbtMs": 6439.000000000003,
+        "transferBytes": 755907,
+        "fontBytes": 144885
+      },
+      {
+        "path": ".reports/before-3.json",
+        "sha256": "fe0fe5601f4d3ffea4f28c24fa638e3f475705ae1a5a93fccd494112a2f0bca6",
+        "fetchTime": "2026-10-25T12:54:58.347Z",
+        "scores": {
+          "performance": 44,
+          "accessibility": 94,
+          "best-practices": 96,
+          "seo": 91
+        },
+        "lcpMs": 7213.687099999999,
+        "cls": 0,
+        "tbtMs": 6348.999999999999,
+        "transferBytes": 755888,
+        "fontBytes": 144885
+      }
+    ],
+    "median": {
+      "scores": {
+        "performance": 42,
+        "accessibility": 94,
+        "best-practices": 96,
+        "seo": 91
+      },
+      "lcpMs": 7287.9815,
+      "cls": 0,
+      "tbtMs": 6348.999999999999,
+      "transferBytes": 755888,
+      "fontBytes": 144885
+    }
+  },
+  "after": {
+    "runs": [
+      {
+        "path": ".reports/after-1.json",
+        "sha256": "ab130b7270c39840b39c5800195b66f7c9b97d9559a5856390d038f32314ae28",
+        "fetchTime": "2026-10-25T13:25:58.086Z",
+        "scores": {
+          "performance": 98,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 2434.2245000000003,
+        "cls": 0,
+        "tbtMs": 20.5,
+        "transferBytes": 231923,
+        "fontBytes": 0
+      },
+      {
+        "path": ".reports/after-2.json",
+        "sha256": "ceaf79e17e1af91ddd9e056d74b89c8bc69722efd6ab69f4ed8076eea5b25387",
+        "fetchTime": "2026-10-25T13:26:09.797Z",
+        "scores": {
+          "performance": 99,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 1961.5022,
+        "cls": 0,
+        "tbtMs": 16,
+        "transferBytes": 231923,
+        "fontBytes": 0
+      },
+      {
+        "path": ".reports/after-3.json",
+        "sha256": "f13de63068cb0dc0054efd831fce057081636f851bf3cb55d37ccb68f14aba0e",
+        "fetchTime": "2026-10-25T13:26:21.274Z",
+        "scores": {
+          "performance": 99,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 2037.0211,
+        "cls": 0,
+        "tbtMs": 19.5,
+        "transferBytes": 231923,
+        "fontBytes": 0
+      }
+    ],
+    "median": {
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2037.0211,
+      "cls": 0,
+      "tbtMs": 19.5,
+      "transferBytes": 231923,
+      "fontBytes": 0
+    }
+  }
+}

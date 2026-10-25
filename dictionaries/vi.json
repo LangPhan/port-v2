@@ -1,34 +1,129 @@
 {
+  "meta": {
+    "title": "Phan Văn Đạt — Front-end Developer",
+    "description": "Portfolio của Phan Văn Đạt: giao diện web với React, Next.js và TypeScript. Khám phá dự án và liên hệ trực tiếp."
+  },
   "navbar": {
-    "brand": "Lãng"
-  },
-  "hero": {
-    "hello": "Xin chào. Tôi là",
-    "button": "Bắt đầu khám phá"
-  },
-  "profile": {
-    "intro": "Xin chào, tôi là Đạt, một lập trình viên Front-end. Tôi thích tạo ra các ứng dụng web hấp dẫn về mặt hình ảnh và thân thiện với người dùng bằng HTML, CSS và JavaScript. Là một sinh viên mới tốt nghiệp, tôi rất hào hứng mang các kỹ năng kỹ thuật và tư duy giải quyết vấn đề của mình vào các dự án thực tế và phát triển trong ngành CNTT."
-  },
-  "projects": {
-    "title": "Dự án của tôi",
-    "h-tech": "Công nghệ",
-    "h-des": "Mô tả",
-    "project": {
-      "ai-shoe": "AI E-shoes Shop là một cửa hàng giày trực tuyến tích hợp trí tuệ nhân tạo để nâng cao trải nghiệm mua sắm của khách hàng. Trợ lý AI phân tích sở thích của khách hàng, chẳng hạn như kích cỡ giày, phong cách, loại hoạt động và các lần mua trước đây, để đề xuất các tùy chọn phù hợp nhất. Nền tảng này cũng cung cấp thử giày ảo, gợi ý cá nhân hóa và hỗ trợ khách hàng theo thời gian thực. Dự án này tập trung vào việc cải thiện sự hài lòng của khách hàng bằng cách giảm thời gian tìm kiếm sản phẩm phù hợp và tăng sự tự tin khi mua hàng.",
-      "kada": "Tôi đã thiết kế và xây dựng một trang chủ trang nhã và thân thiện với người dùng cho KADA, tập trung vào việc cung cấp một cái nhìn tổng quan rõ ràng về các sản phẩm và dịch vụ của công ty. Trang web có các phần giới thiệu về nền tảng công ty, các sản phẩm chính và dịch vụ. Ngoài ra, một biểu mẫu liên hệ đã được tích hợp để thu thập thông tin của khách truy cập, cho phép dễ dàng giao tiếp và trả lời các yêu cầu từ khách hàng tiềm năng.",
-      "tdtu-find": "TDTU FIND là một ứng dụng web được thiết kế để giúp sinh viên báo cáo và tìm lại các vật phẩm bị mất tại trường đại học. Nó cho phép người dùng đăng chi tiết về các vật phẩm bị mất hoặc tìm thấy, tạo ra một nền tảng có tổ chức và hợp lý để thu hồi nhanh chóng. Hệ thống có giao diện đơn giản, nơi sinh viên có thể mô tả các vật phẩm bị mất, tải lên hình ảnh và cung cấp thông tin liên hệ. Nền tảng này sẽ khớp các vật phẩm bị mất với các phát hiện tiềm năng và thông báo cho chủ sở hữu khi có sự trùng khớp.",
-      "richard": "RICHARD COPY WRITER là một ứng dụng web toàn diện được thiết kế để giới thiệu các khóa học liên quan đến spa và cung cấp chương trình tiếp thị liên kết. Nền tảng này cho phép người dùng duyệt qua thông tin chi tiết về các khóa học spa khác nhau, đăng ký chương trình liên kết để quảng bá các khóa học và đăng ký tài khoản để mua và học các khóa học spa thông qua các video hướng dẫn. Trang web cung cấp trải nghiệm người dùng liền mạch, bao gồm mua khóa học, phát video và theo dõi liên kết để khuyến khích sự tham gia và học tập của người dùng.",
-      "drink-shop": "Drink Water Shop là một ứng dụng web được thiết kế để cho phép người dùng duyệt, chọn và mua các loại sản phẩm nước khác nhau. Nền tảng này cung cấp trải nghiệm mua sắm thân thiện với người dùng, bao gồm các bộ lọc sản phẩm, quản lý giỏ hàng và các tùy chọn thanh toán trực tuyến. Đối với quản trị viên, hệ thống bao gồm một bảng điều khiển quản lý nơi họ có thể theo dõi hàng tồn kho, quản lý sản phẩm nước và giám sát các hoạt động của nhân viên như thực hiện đơn hàng và dịch vụ khách hàng. Nền tảng này cũng tạo ra các báo cáo để giúp quản trị viên giám sát doanh số bán hàng và mức tồn kho.",
-      "app-marketplace": "App and Game Marketplace là một nền tảng thương mại điện tử cho phép người dùng khám phá, mua và tải xuống nhiều ứng dụng và trò chơi khác nhau. Nền tảng này bao gồm các tính năng như bộ lọc tìm kiếm, đề xuất sản phẩm, đánh giá của người dùng và cổng thanh toán an toàn. Người dùng đã đăng ký có thể đăng ký làm thành viên để đăng, quản lý và bán trò chơi của riêng họ trên nền tảng, với quyền truy cập vào bảng điều khiển cá nhân để theo dõi lượt tải xuống, doanh số bán hàng và đánh giá. Quản trị viên có các công cụ để quản lý nội dung, giám sát giao dịch và đảm bảo chất lượng của thị trường."
+    "home": "Về đầu trang",
+    "navigation": "Điều hướng chính",
+    "projects": "Dự án",
+    "about": "Giới thiệu",
+    "contact": "Liên hệ",
+    "language": "Ngôn ngữ",
+    "skip": "Đến nội dung chính",
+    "theme": {
+      "light": "Kéo dây để bật chế độ sáng",
+      "dark": "Kéo dây để bật chế độ tối"
     }
   },
+  "hero": {
+    "eyebrow": "THIẾT KẾ GỌN. TRẢI NGHIỆM RÕ.",
+    "description": "Tôi xây dựng giao diện web dễ sử dụng, chú trọng từng chi tiết từ bố cục đến tương tác.",
+    "projects": "Xem dự án",
+    "contact": "Liên hệ với tôi",
+    "portrait": "Từ ý tưởng đến giao diện",
+    "explore": "Khám phá các dự án"
+  },
+  "profile": {
+    "eyebrow": "GIỚI THIỆU & KỸ NĂNG",
+    "title": "Giao diện tốt bắt đầu từ người dùng.",
+    "intro": "Tôi là Đạt, lập trình viên Front-end. Tôi thích biến ý tưởng thành ứng dụng web rõ ràng, dễ thao tác với HTML, CSS, JavaScript và hệ sinh thái React.",
+    "evidence": "Xem kỹ năng trong dự án",
+    "skills": [
+      {
+        "title": "Giao diện web",
+        "tools": "React · Next.js · TypeScript · Tailwind CSS",
+        "project": "project-kada",
+        "evidence": "Ứng dụng trong KADA"
+      },
+      {
+        "title": "Ứng dụng & dữ liệu",
+        "tools": "Node.js · MongoDB · Cloudinary",
+        "project": "project-tdtu-find",
+        "evidence": "Khám phá TDTU FIND"
+      },
+      {
+        "title": "Thương mại điện tử",
+        "tools": "React · Tailwind CSS · TanStack Query",
+        "project": "project-ai-shoe",
+        "evidence": "Khám phá AI E-shoes Shop"
+      }
+    ]
+  },
+  "projects": {
+    "eyebrow": "DỰ ÁN TIÊU BIỂU",
+    "title": "Ý tưởng thành sản phẩm.",
+    "intro": "Một số dự án về website doanh nghiệp, thương mại điện tử và ứng dụng cộng đồng.",
+    "featured": "Dự án nổi bật",
+    "more": "Xem thêm 3 dự án",
+    "details": "Khám phá dự án",
+    "visit": "Xem website",
+    "external": "mở trong tab mới",
+    "tech": "Công nghệ",
+    "problem": "Bài toán",
+    "scope": "Phạm vi",
+    "contribution": "Đóng góp của tôi",
+    "preview": "Ảnh giao diện",
+    "items": {
+      "kada": {
+        "category": "WEBSITE DOANH NGHIỆP",
+        "summary": "Trang giới thiệu sản phẩm và dịch vụ KADA với bố cục rõ ràng, giúp khách truy cập tìm thông tin và gửi yêu cầu.",
+        "problem": "Giới thiệu công ty, sản phẩm và dịch vụ trong một trang chủ dễ tìm hiểu.",
+        "scope": "Các khu vực giới thiệu công ty, sản phẩm, dịch vụ và biểu mẫu liên hệ.",
+        "contribution": "Thiết kế và xây dựng trang chủ, tích hợp biểu mẫu liên hệ.",
+        "role": "Thiết kế & Frontend"
+      },
+      "ai-shoe": {
+        "category": "THƯƠNG MẠI ĐIỆN TỬ",
+        "summary": "Cửa hàng giày trực tuyến kết hợp trải nghiệm mua sắm và trợ lý gợi ý sản phẩm bằng AI.",
+        "problem": "Giúp người mua tìm sản phẩm phù hợp trong danh mục giày trực tuyến.",
+        "scope": "Giao diện cửa hàng, khám phá sản phẩm và trợ lý gợi ý theo nhu cầu mua sắm.",
+        "contribution": "Phụ trách phát triển giao diện Frontend bằng React cho cửa hàng giày trực tuyến.",
+        "role": "Frontend"
+      },
+      "tdtu-find": {
+        "category": "ỨNG DỤNG CỘNG ĐỒNG",
+        "summary": "Ứng dụng tìm đồ thất lạc cho sinh viên: đăng thông tin đồ mất hoặc nhặt được, kèm ảnh và cách liên hệ.",
+        "problem": "Kết nối người mất đồ và người nhặt được trong cộng đồng sinh viên.",
+        "scope": "Đăng tin, mô tả vật phẩm, hình ảnh và thông tin liên hệ.",
+        "contribution": "Phụ trách cả giao diện Frontend và Backend cho ứng dụng tìm đồ thất lạc.",
+        "role": "Frontend & Backend"
+      },
+      "richard": {
+        "category": "NỀN TẢNG NỘI DUNG",
+        "summary": "Website khóa học về spa, kết hợp nội dung học qua video và chương trình tiếp thị liên kết.",
+        "problem": "Tập hợp thông tin khóa học và luồng tham gia học trên cùng một website.",
+        "scope": "Giới thiệu khóa học, tài khoản học viên, video và chương trình liên kết.",
+        "contribution": "",
+        "role": ""
+      },
+      "drink-shop": {
+        "category": "THƯƠNG MẠI ĐIỆN TỬ",
+        "summary": "Ứng dụng mua nước trực tuyến với danh mục sản phẩm, giỏ hàng và khu vực quản lý cửa hàng.",
+        "problem": "Kết nối trải nghiệm mua hàng với việc quản lý sản phẩm và đơn hàng.",
+        "scope": "Danh mục, giỏ hàng, quản lý tồn kho, đơn hàng và báo cáo bán hàng.",
+        "contribution": "",
+        "role": ""
+      },
+      "app-marketplace": {
+        "category": "SẢN PHẨM SỐ",
+        "summary": "Nền tảng khám phá ứng dụng và trò chơi, với luồng mua, tải xuống và quản lý sản phẩm của người bán.",
+        "problem": "Tạo không gian chung để giới thiệu, tìm kiếm và phân phối ứng dụng hoặc trò chơi.",
+        "scope": "Danh mục sản phẩm số, tìm kiếm, đánh giá và khu vực quản lý của người bán.",
+        "contribution": "",
+        "role": ""
+      }
+    },
+    "repository": "Xem mã nguồn",
+    "video": "Xem video demo"
+  },
   "contact": {
-    "title": "liên hệ với tôi",
-    "firstName": "Tên",
-    "lastName": "Họ",
-    "email": "Địa chỉ email",
-    "content": "Nội dung",
-    "content-place": "Nói gì đó với tôi...",
-    "button": "Liên hệ ngay"
+    "eyebrow": "BẮT ĐẦU MỘT CUỘC TRÒ CHUYỆN",
+    "title": "Cùng xây dựng điều gì đó hay.",
+    "description": "Bạn có ý tưởng, cơ hội hợp tác hoặc muốn trao đổi về một dự án? Gửi email cho tôi.",
+    "hint": "Mở ứng dụng email của bạn, hoặc sao chép địa chỉ ở trên."
+  },
+  "footer": {
+    "top": "Về đầu trang"
   }
 }
