@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import test from "node:test";
 
 const base = process.env.PORTFOLIO_URL ?? "http://localhost:3010";
@@ -12,7 +13,13 @@ for (const [route, tag] of Object.entries(locales)) {
     assert.match(html, new RegExp(`<html[^>]*lang="${tag}"`));
     assert.equal((html.match(/<h1\b/g) ?? []).length, 1, "one primary heading");
     assert.match(html, /<main[^>]*id="main-content"/);
-    for (const id of ["projects", "profile", "contact"]) {
+    for (const id of [
+      "projects",
+      "profile",
+      "skills",
+      "more-work",
+      "contact",
+    ]) {
       assert.match(html, new RegExp(`<section[^>]*id="${id}"`));
       assert.match(html, new RegExp(`href="#${id}"`));
     }
@@ -50,11 +57,54 @@ for (const [route, tag] of Object.entries(locales)) {
     );
     assert.equal(
       (html.match(/<details\b/g) ?? []).length,
-      7,
-      "project details and the additional work section",
+      3,
+      "all additional project details are available",
     );
+    assert.equal(
+      (html.match(/data-spread="/g) ?? []).length,
+      7,
+      "seven complete chapters",
+    );
+    assert.equal(
+      (html.match(/data-paper="/g) ?? []).length,
+      14,
+      "fourteen readable HTML pages",
+    );
+    assert.match(html, /data-camera="intro"/);
+    assert.match(html, /id="book-contents"/);
+    assert.match(html, /<noscript>/, "reading fallback without JavaScript");
+    assert.doesNotMatch(
+      html,
+      /skip-intro|Bỏ qua giới thiệu|Skip the introduction/,
+    );
+    assert.match(html, /src="\/sounds\/page-flip-01a\.mp3"/);
   });
 }
+
+test("self-hosted Vietnamese font and page-turn audio are valid public assets", async () => {
+  for (const subset of ["latin", "vietnamese"]) {
+    const response = await fetch(`${base}/fonts/noto-serif-${subset}.woff2`, {
+      redirect: "manual",
+    });
+    assert.equal(response.status, 200);
+    const font = Buffer.from(await response.arrayBuffer());
+    assert.equal(font.subarray(0, 4).toString(), "wOF2");
+  }
+  const response = await fetch(`${base}/sounds/page-flip-01a.mp3`, {
+    redirect: "manual",
+  });
+  assert.equal(response.status, 200);
+  const mp3 = Buffer.from(await response.arrayBuffer());
+  const blob = createHash("sha1")
+    .update(`blob ${mp3.length}\0`)
+    .update(mp3)
+    .digest("hex");
+  assert.equal(
+    blob,
+    "5fe309186d80ea3dfbeddf594207c7ffd8f3c3c0",
+    "exact sound from the requested Book Slider demo",
+  );
+});
 
 test("language negotiation and query strings survive redirects", async () => {
   for (const [language, route] of [

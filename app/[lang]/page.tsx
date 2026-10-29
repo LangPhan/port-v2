@@ -1,10 +1,8 @@
 import { getDictionary } from "../../get-dictionary";
 import type { Locale } from "../../i18n-config";
-import { Contact } from "./components/Contact/Contact";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero/Hero";
-import Profile from "./components/Profile/Profile";
-import Project from "./components/Project/Project";
+import PortfolioDesk from "./components/Desk/portfolio-desk";
+import { makePortfolioPages } from "./components/Desk/portfolio-pages";
+import { getDeskCopy } from "./components/Desk/desk-copy";
 
 export default async function IndexPage({
   params,
@@ -13,15 +11,13 @@ export default async function IndexPage({
 }) {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
+  const copy = getDeskCopy(lang);
   return (
-    <>
-      <main id="main-content" tabIndex={-1}>
-        <Hero dictionary={dictionary.hero} />
-        <Project dictionary={dictionary.projects} />
-        <Profile dictionary={dictionary.profile} />
-        <Contact dictionary={dictionary.contact} />
-      </main>
-      <Footer dictionary={dictionary.footer} />
-    </>
+    <PortfolioDesk
+      lang={lang}
+      dictionary={dictionary.navbar}
+      copy={copy}
+      chapters={makePortfolioPages(dictionary, copy)}
+    />
   );
 }

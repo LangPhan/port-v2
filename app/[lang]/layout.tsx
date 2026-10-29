@@ -4,10 +4,11 @@ import { notFound } from "next/navigation";
 import { getDictionary } from "../../get-dictionary";
 import { i18n, isLocale, languageTags } from "../../i18n-config";
 import { site } from "../../site-config";
-import Navbar from "./components/Navbar";
 import { ThemeProvider } from "./components/theme-provider";
 import "pullcord/pullcord.css";
 import "./global.css";
+import "./components/Desk/fonts.css";
+import "./components/Desk/desk.css";
 
 type RouteProps = { params: Promise<{ lang: string }> };
 export function generateStaticParams() {
@@ -78,7 +79,6 @@ export default async function Root({
           enableSystem={false}
           storageKey="portfolio-theme"
         >
-          <Navbar lang={lang} dictionary={dictionary.navbar} />
           {children}
         </ThemeProvider>
         {process.env.VERCEL === "1" && <Analytics />}
