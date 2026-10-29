@@ -23,6 +23,7 @@ In another terminal, while the production server is running:
 
 ```powershell
 bun run test:smoke
+bun run test:page-turn
 ```
 
 Override `PORTFOLIO_URL` if the preview runs at a different address. Smoke checks cover all locales, section navigation contracts, public project links, the contact address, localized metadata, language redirects, SEO assets and 404 responses.
@@ -46,7 +47,9 @@ The portfolio is a journal on a 3D desk, inspired by [FeralUI DeskFolio](https:/
 
 The scene uses CSS perspective, shared transforms, two-sided sheets and code-native desk objects; no WebGL engine or external 3D models are downloaded. There is no idle rendering loop. Desktop shows a spread; phones show each of the fourteen pages individually. Text selection and native image dragging inside the journal are disabled to prioritize page turning. Reading view presents the whole book as a normal scrolling document; disabling JavaScript also exposes all pages. Reduced-motion preferences skip the camera entrance, turn pages immediately, and remove nonessential transitions. Vercel Analytics only renders when `VERCEL=1`.
 
-Vietnamese chapter headings use self-hosted Noto Serif (Latin + Vietnamese WOFF2 subsets, with the bundled SIL OFL license). Page turns use the exact MP3 requested from [Wawa Sensei's Book Slider demo](https://r3f-animated-book-slider-final.vercel.app/); the speaker button controls sound and stores the preference under `portfolio-page-sound`. See `public/sounds/SOURCE.md` for the asset source and checksum.
+Each turning sheet bends through 30 hinged segments (20 on phones), inspired by [Wawa Sensei's animated book](https://r3f-animated-book-slider-final.vercel.app/). Surface lighting follows the bend, while a projected soft shadow follows the paper's height and outline. The 960ms animation runs only during a page turn and is bypassed for reduced motion. `bun run test:page-turn` verifies geometry, continuity, reverse motion and lighting.
+
+Vietnamese chapter headings use self-hosted Noto Serif (Latin + Vietnamese WOFF2 subsets, with the bundled SIL OFL license). Page turns use the exact MP3 requested from the same demo; the speaker button controls sound and stores the preference under `portfolio-page-sound`. See `public/sounds/SOURCE.md` for the asset source and checksum.
 
 Day/night mode uses the official [FeralUI PullCord](https://feralui.dev/pullcord) component (`pullcord@0.1.0`). Pull the cord, click its handle, or use Enter/Space. It changes the room, wood and lamp glow while keeping the printed pages readable. Dark is the initial default; `next-themes` stores the selection under `portfolio-theme` and restores it before paint. The cord retains its doubled length, sleeps at rest, skips its entrance animation, and respects reduced motion. Scene colors live in `desk.css`; toggle labels remain translated in every dictionary.
 

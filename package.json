@@ -5,7 +5,8 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "test:smoke": "node --test tests/smoke.test.mjs"
+    "test:smoke": "node --test tests/smoke.test.mjs",
+    "test:page-turn": "node --test tests/page-turn.test.mjs"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "0.2.32",

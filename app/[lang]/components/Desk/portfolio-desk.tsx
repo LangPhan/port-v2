@@ -32,6 +32,7 @@ import LocaleSwitcher from "../locale-switcher";
 import ThemePullcord from "../theme-pullcord";
 import type { DeskCopy } from "./desk-copy";
 import DeskObjects from "./desk-objects";
+import CurvedPageTurn from "./curved-page-turn";
 
 export type BookChapter = {
   id: string;
@@ -71,7 +72,6 @@ export default function PortfolioDesk({
   const bookRef = useRef<HTMLDivElement>(null);
   const pageAudioRef = useRef<HTMLAudioElement>(null);
   const introTimer = useRef<ReturnType<typeof setTimeout>>();
-  const flipTimer = useRef<ReturnType<typeof setTimeout>>();
   const copyTimer = useRef<ReturnType<typeof setTimeout>>();
   const syncedHash = useRef<string | null>(null);
   const gesture = useRef<{ x: number; y: number; pointer: number } | null>(
@@ -89,7 +89,6 @@ export default function PortfolioDesk({
 
   const jump = useCallback(
     (index: number, hash?: string) => {
-      clearTimeout(flipTimer.current);
       busy.current = false;
       setFlip(null);
       focusBook();
@@ -127,7 +126,6 @@ export default function PortfolioDesk({
     return () => {
       preference.removeEventListener("change", applyMotion);
       clearTimeout(introTimer.current);
-      clearTimeout(flipTimer.current);
       clearTimeout(copyTimer.current);
       audio?.pause();
     };
@@ -252,11 +250,6 @@ export default function PortfolioDesk({
         to: target,
         direction: direction > 0 ? "forward" : "backward",
       });
-      flipTimer.current = setTimeout(() => {
-        setPage(target);
-        setFlip(null);
-        busy.current = false;
-      }, 760);
     },
     [focused, lastPage, mobile, opened, page, playPageTurn, reduced],
   );
@@ -347,7 +340,6 @@ export default function PortfolioDesk({
 
   function showOverview() {
     clearTimeout(introTimer.current);
-    clearTimeout(flipTimer.current);
     busy.current = false;
     setFlip(null);
     setSkipEntrance(false);
@@ -365,6 +357,17 @@ export default function PortfolioDesk({
   ];
   const flipFrom = flip ? Math.floor(flip.from / 2) : chapter;
   const flipTo = flip ? Math.floor(flip.to / 2) : chapter;
+  const frontLeaf = flip
+    ? flip.direction === "forward"
+      ? mobile ? flip.from : flipFrom * 2 + 1
+      : mobile ? flip.to : flipTo * 2 + 1
+    : 0;
+  const backLeaf = flip
+    ? flip.direction === "forward"
+      ? mobile ? flip.to : flipTo * 2
+      : mobile ? flip.from : flipFrom * 2
+    : 0;
+  const leafNode = (leaf: number) => pageNodes(Math.floor(leaf / 2))[leaf % 2];
 
   return (
     <div
@@ -402,6 +405,8 @@ export default function PortfolioDesk({
           <button
             className="desk-icon-button reading-toggle"
             onClick={() => {
+              busy.current = false;
+              setFlip(null);
               if (reading) {
                 setSkipEntrance(true);
                 focusBook();
@@ -546,7 +551,13 @@ export default function PortfolioDesk({
                 {flip && (
                   <div
                     className={`flip-underlay flip-${flip.direction}`}
-                    ref={(node) => node?.setAttribute("inert", "")}
+                    ref={(node) => {
+                      node?.setAttribute("inert", "");
+                      node?.querySelectorAll("[id], [aria-labelledby]").forEach(copy => {
+                        copy.removeAttribute("id");
+                        copy.removeAttribute("aria-labelledby");
+                      });
+                    }}
                     aria-hidden="true"
                   >
                     {mobile ? (
@@ -574,34 +585,19 @@ export default function PortfolioDesk({
                   </div>
                 )}
                 {flip && (
-                  <div
-                    className={`turning-paper turn-${flip.direction}${mobile ? " turn-mobile" : ""}`}
-                    ref={(node) => node?.setAttribute("inert", "")}
-                    aria-hidden="true"
-                  >
-                    <div className="turn-front book-paper">
-                      {
-                        pageNodes(flipFrom)[
-                          mobile
-                            ? flip.from % 2
-                            : flip.direction === "forward"
-                              ? 1
-                              : 0
-                        ]
-                      }
-                    </div>
-                    <div className="turn-back book-paper">
-                      {
-                        pageNodes(flipTo)[
-                          mobile
-                            ? flip.to % 2
-                            : flip.direction === "forward"
-                              ? 0
-                              : 1
-                        ]
-                      }
-                    </div>
-                  </div>
+                  <CurvedPageTurn
+                    direction={flip.direction}
+                    mobile={mobile}
+                    front={leafNode(frontLeaf)}
+                    back={leafNode(backLeaf)}
+                    frontLeaf={frontLeaf}
+                    backLeaf={backLeaf}
+                    onComplete={() => {
+                      setPage(flip.to);
+                      setFlip(null);
+                      busy.current = false;
+                    }}
+                  />
                 )}
                 <div className="book-gutter" aria-hidden="true" />
                 {opened && focused && !flip && (
@@ -793,7 +789,6 @@ export default function PortfolioDesk({
               className="desk-icon-button close-book-button"
               aria-label={copy.close}
               onClick={() => {
-                clearTimeout(flipTimer.current);
                 busy.current = false;
                 setFlip(null);
                 setOpened(false);

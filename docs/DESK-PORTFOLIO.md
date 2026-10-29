@@ -14,6 +14,16 @@ Implemented in the existing Next.js repository, following the owner's selected [
 
 ## Responsive and accessible behavior
 
+### Curved paper and shadow revision (2026-10-29)
+
+Page turns now use a chain of 30 CSS 3D hinges (20 below 700px), inspired by the segmented paper in [Wawa Sensei's animated-book source](https://github.com/wass08/r3f-animated-book-slider-final/blob/main/src/components/Book.jsx). The paper bows as it lifts and relaxes to a flat sheet at either end. Both faces receive lighting from their surface normals; a blurred SVG shadow projects the bowed outline onto the underlying spread, with a tighter contact shadow at the spine. Forward and backward turns use mirrored geometry.
+
+A turn takes 960ms. The component owns and cleans up its animation frames and completion fallback, so chapter jumps, reading view, overview and closing can cancel a turn. There is no idle render loop and no new rendering dependency. Temporary copies retain the source page's scroll position and expanded details, are inert/hidden from assistive technology, and have duplicate IDs removed. Reduced motion keeps immediate navigation.
+
+`bun run test:page-turn` passes all six checks for flat endpoints, continuous segment lengths, actual curvature, mirrored reverse motion, shadow geometry/softness, face lighting and clamped animation time. The production build and TypeScript pass; first-load JavaScript is 193 kB.
+
+The production preview was checked separately for desktop forward/backward turns, changing shadow opacity/blur, correct front/back page numbers, no duplicate IDs during the turn, and sound playback. At 390×844, it uses 20 segments, advances one leaf per turn, supports reverse navigation, exposes one active paper and has no horizontal document overflow. Reading view, overview, closing and Home/End jumps cancel the animation; navigation works after cancellation. No browser warnings/errors were recorded. Reduced-motion behavior was inspected in source; physical-phone testing remains deferred until deployment. [Mid-turn screenshot](ux-audit/desk/curved-page-turn.png).
+
 ### Interaction revision (2026-10-29)
 
 At the owner's request, text selection and native image dragging are disabled throughout the book, and dragging the content itself turns the page. Interactive links/details and vertical touch scrolling still work. The intro skip button has been removed in every language.
@@ -35,6 +45,8 @@ The earlier 21 browser observations below cover the original desk implementation
 ## Source map
 
 - `app/[lang]/components/Desk/portfolio-desk.tsx`: camera, book state, gestures, keyboard, hash navigation, contents, reading view and contact shortcut.
+- `app/[lang]/components/Desk/curved-page-turn.tsx`: segmented two-sided HTML paper, surface lighting, projected shadow and animation lifecycle.
+- `app/[lang]/components/Desk/page-turn-math.mjs`: paper geometry, directional lighting and shadow projection, shared with Node tests.
 - `app/[lang]/components/Desk/portfolio-pages.tsx`: server-composed chapter content using the original dictionaries and project data.
 - `app/[lang]/components/Desk/desk-objects.tsx`: code-native desk objects.
 - `app/[lang]/components/Desk/desk.css`: materials, perspective, lighting, paper, cover, page turns and responsive layouts.
@@ -64,6 +76,6 @@ Verified on the production build on 2026-10-29:
 
 The 21 browser observations are saved locally in the ignored `.reports/desk-browser-qa.json`. Screenshots: [cover](ux-audit/desk/cover-light.png), [overview](ux-audit/desk/overview-light.png), [open spread](ux-audit/desk/spread-light.png).
 
-First-load JavaScript reported by Next.js is 191 kB. Earlier Lighthouse figures in `UX-VERIFICATION.md` describe the previous scrolling design and must not be presented as measurements of this scene. Reduced motion and the no-JavaScript fallback were inspected in source; the browser tooling did not expose an emulation switch for these preferences. Physical-phone verification remains scheduled after deployment, as requested by the owner.
+First-load JavaScript reported by Next.js is 193 kB after the curved-paper revision. Earlier Lighthouse figures in `UX-VERIFICATION.md` describe the previous scrolling design and must not be presented as measurements of this scene. Reduced motion and the no-JavaScript fallback were inspected in source; the browser tooling did not expose an emulation switch for these preferences. Physical-phone verification remains scheduled after deployment, as requested by the owner.
 
 Deployment continues through this repository's existing hosting workflow. This change does not create a separate hosted Site or replace its domain configuration.

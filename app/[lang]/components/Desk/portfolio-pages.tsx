@@ -85,7 +85,7 @@ export function makePortfolioPages(
       ),
       right: (
         <Folio number={2}>
-          <section id="profile" aria-labelledby="folio-about">
+          <section className="paper-about" id="profile" aria-labelledby="folio-about">
             <p className="paper-kicker">01 / {copy.about}</p>
             <h2 id="folio-about">{d.profile.title}</h2>
             <p className="paper-intro">{d.profile.intro}</p>

@@ -1026,18 +1026,18 @@ html[lang="vi"] .paper-content h3 {
   transform: rotate(-3deg);
   color: #6b7958;
 }
-#profile h2 {
+.paper-about h2 {
   font-size: 38px;
   margin-bottom: 18px;
 }
-#profile .paper-intro,
-#profile > p:not(.paper-kicker) {
+.paper-about .paper-intro,
+.paper-about > p:not(.paper-kicker) {
   font-size: 17px;
 }
-#profile .paper-divider {
+.paper-about .paper-divider {
   margin-block: 16px;
 }
-#profile .signature {
+.paper-about .signature {
   margin-top: 12px;
 }
 .orange-period {
@@ -1536,64 +1536,81 @@ html[lang="vi"] .paper-content h3 {
   transform: translateZ(9px);
   pointer-events: none;
 }
-.turning-paper {
-  position: absolute;
-  top: 0;
-  left: 430px;
-  width: 430px;
-  height: 570px;
-  transform-style: preserve-3d;
-  transform-origin: left center;
-  animation: paper-forward 0.76s cubic-bezier(0.3, 0.1, 0.2, 1) forwards;
-  pointer-events: none;
-}
-.turning-paper.turn-backward {
-  left: 0;
-  transform-origin: right center;
-  animation-name: paper-backward;
-}
-.turn-front,
-.turn-back {
+.curved-turn {
   position: absolute;
   inset: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(13px);
+  pointer-events: none;
+}
+.paper-spine {
+  position: absolute;
+  top: 0;
+  left: var(--turn-anchor);
+  width: 430px;
+  height: 570px;
+  transform-origin: 0 50%;
+  transform-style: preserve-3d;
+}
+.paper-bone {
+  position: absolute;
+  top: 0;
+  height: 570px;
+  transform-origin: 0 50%;
+  transform-style: preserve-3d;
+}
+/* Clip only each face; clipping the hinge chain would flatten its 3D space. */
+.paper-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--segment-width) + 0.35px);
+  height: 570px;
+  overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  background-image: linear-gradient(
-    90deg,
-    #6a664e2e,
-    transparent 15%,
-    #fff5 85%
-  );
-  border-radius: 3px;
+  background: var(--desk-paper);
+  transform: translateZ(0.15px);
 }
-.turn-back {
-  transform: rotateY(180deg);
-  background-image: linear-gradient(90deg, #fff4, transparent 85%, #5f5d3f33);
+.curve-back {
+  transform: rotateY(180deg) translateZ(0.15px);
 }
-.turning-paper .paper-content {
+.curve-content.book-paper {
+  position: absolute;
+  top: 0;
+  width: 430px;
+  height: 570px;
+  border-radius: 0;
+}
+.curved-turn .paper-content {
   overflow: hidden;
 }
-@keyframes paper-forward {
-  0% {
-    transform: translateZ(13px) rotateY(0deg);
-  }
-  45% {
-    transform: translateZ(95px) rotateY(-85deg);
-  }
-  100% {
-    transform: translateZ(13px) rotateY(-180deg);
-  }
+.paper-tone {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
-@keyframes paper-backward {
-  0% {
-    transform: translateZ(13px) rotateY(0deg);
-  }
-  45% {
-    transform: translateZ(95px) rotateY(85deg);
-  }
-  100% {
-    transform: translateZ(13px) rotateY(180deg);
-  }
+.turn-shadow-plane {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 570px;
+  overflow: visible;
+  transform: translateZ(-2px);
+}
+.turn-shadow-shape {
+  fill: #202315;
+  opacity: 0;
+}
+.turn-contact-shadow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--turn-anchor);
+  width: 64px;
+  background: linear-gradient(90deg, transparent, #24271965 47%, transparent);
+  transform: translateX(-50%) translateZ(-1px);
+  opacity: 0;
 }
 
 /* Quiet interface outside the scene. */
@@ -1978,27 +1995,6 @@ html[lang="vi"] .paper-content h3 {
   .book-gutter {
     display: none;
   }
-  .turning-paper.turn-mobile {
-    left: 0;
-  }
-  .turn-mobile.turn-backward {
-    transform-origin: left center;
-    animation-name: paper-mobile-back;
-  }
-  @keyframes paper-mobile-back {
-    from {
-      transform: translateZ(13px) rotateY(-180deg);
-    }
-    to {
-      transform: translateZ(13px) rotateY(0deg);
-    }
-  }
-  .turn-mobile.turn-backward .turn-front {
-    transform: rotateY(180deg);
-  }
-  .turn-mobile.turn-backward .turn-back {
-    transform: none;
-  }
   .desk-lamp-control {
     top: 0;
     right: 19px;
@@ -2120,7 +2116,7 @@ html[lang="vi"] .paper-content h3 {
 .is-reading .desk-lamp-control,
 .is-reading .skip-intro,
 .is-reading .overview-enter,
-.is-reading .turning-paper {
+.is-reading .curved-turn {
   display: none;
 }
 .is-reading .book-position,
@@ -2198,7 +2194,7 @@ html[lang="vi"] .paper-content h3 {
   .book-cover {
     transition: none !important;
   }
-  .turning-paper {
-    animation: none !important;
+  .curved-turn {
+    display: none;
   }
 }
