@@ -14,6 +14,12 @@ Implemented in the existing Next.js repository, following the owner's selected [
 
 ## Responsive and accessible behavior
 
+### Closing hinge revision (2026-10-30)
+
+The back cover and right paper block now keep fixed widths of 448px and 430px. The left paper block and visible left leaf rotate around the spine with the front cover, using the same one-second easing, instead of changing the width of the base. Reading view removes these transforms; the extra left block is hidden below 700px, and reduced motion disables the hinge transition.
+
+Verified in the production browser: base widths remain constant throughout closing, closing/opening and page turning work, reading view has no leaf transform, and the 390×844 layout has no horizontal document overflow. Build/type validation and all eight smoke checks pass; no browser warnings/errors were recorded. [Closing animation screenshot](ux-audit/desk/book-closing.png).
+
 ### Curved paper and shadow revision (2026-10-29)
 
 Page turns now use a chain of 30 CSS 3D hinges (20 below 700px), inspired by the segmented paper in [Wawa Sensei's animated-book source](https://github.com/wass08/r3f-animated-book-slider-final/blob/main/src/components/Book.jsx). The paper bows as it lifts and relaxes to a flat sheet at either end. Both faces receive lighting from their surface normals; a blurred SVG shadow projects the bowed outline onto the underlying spread, with a tighter contact shadow at the spine. Forward and backward turns use mirrored geometry.

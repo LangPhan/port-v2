@@ -519,6 +519,7 @@ export default function PortfolioDesk({
               >
                 <div className="book-back" aria-hidden="true" />
                 <div className="page-block" aria-hidden="true" />
+                <div className="page-block page-block-left" aria-hidden="true" />
                 <div className="book-spreads">
                   {chapters.map((item, index) => (
                     <div

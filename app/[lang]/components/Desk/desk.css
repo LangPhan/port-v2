@@ -11,6 +11,8 @@
   --desk-paper: #f4efdf;
   --desk-paper-ink: #28372e;
   --desk-accent: #d7aa7a;
+  --desk-scroll-thumb: #3b473f;
+  --desk-scroll-hover: #536057;
 }
 :root.light {
   --desk-room: #e9e5d9;
@@ -22,6 +24,27 @@
   --desk-wood-light: #c8a172;
   --desk-light-opacity: 0.14;
   --desk-accent: #915533;
+  --desk-scroll-thumb: #c9c5b8;
+  --desk-scroll-hover: #b4b0a1;
+}
+html::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+html::-webkit-scrollbar-track,
+html::-webkit-scrollbar-corner {
+  background: var(--desk-room);
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--desk-scroll-thumb);
+  border-radius: 999px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--desk-scroll-hover);
+}
+html::-webkit-scrollbar-button,
+.paper-content::-webkit-scrollbar-button {
+  display: none;
 }
 body {
   background: var(--desk-room);
@@ -786,11 +809,6 @@ body {
     11px 26px 20px #10211655,
     15px 45px 45px #0f211977;
   transform: translateZ(-8px);
-  transition: width 1s;
-}
-.is-open .book-back {
-  width: 878px;
-  border-radius: 10px;
 }
 .page-block {
   position: absolute;
@@ -808,11 +826,41 @@ body {
   );
   transform: translateZ(-1px);
   box-shadow: 2px 4px 0 #c1baa0;
-  transition: width 1s;
 }
-.is-open .page-block {
-  width: 860px;
-  border-radius: 5px;
+.page-block-left {
+  display: none;
+}
+/* The back cover stays beneath the right-hand block. The left leaves fold
+   around the spine with the front cover, rather than stretching in width. */
+@media (min-width: 700px) {
+  .page-block-left {
+    display: block;
+    left: 0;
+    right: auto;
+    border-radius: 5px 0 0 5px;
+    transform-origin: right center;
+    transform: translateZ(20px) rotateY(180deg);
+    backface-visibility: hidden;
+    transition: transform 1s cubic-bezier(0.2, 0.75, 0.2, 1);
+  }
+  .is-open .page-block-left {
+    transform: translateZ(0) rotateY(0);
+  }
+  .folio-book .book-spreads {
+    visibility: visible;
+  }
+  .book-spread {
+    transform-style: preserve-3d;
+  }
+  .folio-book .book-spread > .paper-left {
+    transform-origin: right center;
+    transform: translateZ(13px) rotateY(180deg);
+    backface-visibility: hidden;
+    transition: transform 1s cubic-bezier(0.2, 0.75, 0.2, 1);
+  }
+  .folio-book.is-open .book-spread > .paper-left {
+    transform: translateZ(0) rotateY(0);
+  }
 }
 .book-spreads {
   position: absolute;
@@ -861,11 +909,40 @@ body {
   padding: 53px 35px 42px;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: #91866c55 transparent;
   font-size: 18px;
   line-height: 1.65;
   overscroll-behavior: contain;
+}
+.paper-content::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.paper-content::-webkit-scrollbar-track,
+.paper-content::-webkit-scrollbar-corner {
+  background: transparent;
+}
+.paper-content::-webkit-scrollbar-thumb {
+  background: #91866c14;
+  border-radius: 999px;
+}
+.paper-content:hover::-webkit-scrollbar-thumb,
+.paper-content:focus-within::-webkit-scrollbar-thumb {
+  background: #91866c30;
+}
+/* Firefox uses the standard thin scrollbar; Chromium uses the widths above. */
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--desk-scroll-thumb) var(--desk-room);
+  }
+  .paper-content {
+    scrollbar-width: thin;
+    scrollbar-color: #91866c14 transparent;
+  }
+  .paper-content:hover,
+  .paper-content:focus-within {
+    scrollbar-color: #91866c30 transparent;
+  }
 }
 .paper-running {
   display: flex;
@@ -2152,6 +2229,10 @@ html[lang="vi"] .paper-content h3 {
   min-height: 570px;
   visibility: visible;
 }
+.is-reading .folio-book .book-spread > .paper-left {
+  transform: none;
+  transition: none;
+}
 .is-reading .paper-content {
   min-height: 100%;
   padding-bottom: 60px;
@@ -2191,7 +2272,9 @@ html[lang="vi"] .paper-content h3 {
 @media (prefers-reduced-motion: reduce) {
   .camera-world,
   .folio-book,
-  .book-cover {
+  .book-cover,
+  .page-block-left,
+  .folio-book .book-spread > .paper-left {
     transition: none !important;
   }
   .curved-turn {
