@@ -272,7 +272,7 @@ export default function PortfolioDesk({
       const target = event.target as HTMLElement;
       if (
         target.closest(
-          'input, textarea, select, [role="menu"], [contenteditable="true"]',
+          '.music-phone, dialog, input, textarea, select, [role="menu"], [contenteditable="true"]',
         )
       )
         return;
@@ -833,7 +833,7 @@ export default function PortfolioDesk({
         </span>
       </footer>
       <noscript>
-        <style>{`.desk-experience .desk-scene{perspective:none!important;height:auto!important;overflow:visible!important}.desk-experience .camera-world{opacity:1!important;position:static!important;transform:none!important;width:auto!important;height:auto!important}.desk-experience .book-position,.desk-experience .folio-book{position:static!important;transform:none!important;width:auto!important;height:auto!important}.desk-experience .book-spreads{position:static!important;visibility:visible!important;transform:none!important}.desk-experience .book-spread{display:grid!important;position:static!important;margin:20px}.desk-experience .book-paper{display:block!important;visibility:visible!important;position:relative!important;transform:none!important;width:auto!important;height:auto!important;min-height:570px}.scene-vignette,.desk-book-target,.wood-table,.desk-props,.book-cover,.book-gutter,.page-block,.book-back,.book-ribbon,.scene-heading,.book-toolbar,.book-invitation,.desk-lamp-control,.desk-header-actions{display:none!important}@media(max-width:699px){.desk-experience .book-spread{grid-template-columns:1fr!important}}`}</style>
+        <style>{`.desk-experience .desk-scene{perspective:none!important;height:auto!important;overflow:visible!important}.desk-experience .camera-world{opacity:1!important;position:static!important;transform:none!important;width:auto!important;height:auto!important}.desk-experience .book-position,.desk-experience .folio-book{position:static!important;transform:none!important;width:auto!important;height:auto!important}.desk-experience .book-spreads{position:static!important;visibility:visible!important;transform:none!important}.desk-experience .book-spread{display:grid!important;position:static!important;margin:20px}.desk-experience .book-paper{display:block!important;visibility:visible!important;position:relative!important;transform:none!important;width:auto!important;height:auto!important;min-height:570px}.scene-vignette,.desk-book-target,.wood-table,.desk-props,.desk-devcard,.desk-phone,.book-cover,.book-gutter,.page-block,.book-back,.book-ribbon,.scene-heading,.book-toolbar,.book-invitation,.desk-lamp-control,.desk-header-actions{display:none!important}@media(max-width:699px){.desk-experience .book-spread{grid-template-columns:1fr!important}}`}</style>
       </noscript>
     </div>
   );

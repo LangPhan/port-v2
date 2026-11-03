@@ -417,44 +417,73 @@ body {
     2px 6px #93977b,
     3px 10px 10px #0003;
 }
-.desk-pencil {
+.desk-devcard {
+  --devcard-facing: -34deg;
   position: absolute;
-  width: 18px;
-  height: 280px;
-  background: linear-gradient(
-    90deg,
-    #884328 0 25%,
-    #cc7847 25% 70%,
-    #e6a76d 70%
-  );
-  left: 310px;
-  top: 650px;
-  transform: translateZ(12px) rotateZ(-24deg);
-  box-shadow: 5px 8px 5px #0004;
+  width: 200px;
+  aspect-ratio: 648 / 914;
+  left: 170px;
+  top: 595px;
+  transform: translateZ(12px) rotateZ(-9deg);
+  transform-style: preserve-3d;
+  border-radius: 18px;
+  pointer-events: auto;
 }
-.desk-pencil span {
-  position: absolute;
-  top: -35px;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-bottom: 35px solid #d7c29c;
+[data-camera="focus"] .desk-devcard {
+  --devcard-facing: -3deg;
 }
-.desk-pencil span::after {
+/* Native-size image transforms must not define the pointer target. These
+   front-facing planes cover the resting card and its raised visual surface. */
+.desk-devcard::before,
+.desk-devcard::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: -3px;
-  border: 3px solid transparent;
-  border-bottom: 11px solid #343a32;
+  inset: -6px;
+  border-radius: 0;
+  background: transparent;
+  /* A small rectangular tolerance keeps rounded corners from dropping hover.
+     Keep the pivot at the original card's bottom-left despite the inset. */
+  transform-origin: 6px calc(100% - 6px);
 }
-.desk-pencil i {
+.desk-devcard::before {
+  transform: translateZ(2px);
+  pointer-events: auto;
+}
+.desk-devcard::after {
+  pointer-events: none;
+}
+.desk-devcard:hover::after,
+.desk-devcard:focus-visible::after {
+  transform: translate3d(0, -140px, 132px) rotateZ(9deg)
+    rotateX(var(--devcard-facing)) scale(1.65);
+  pointer-events: auto;
+}
+.desk-devcard img {
+  /* Keep a native-resolution surface in the 3D compositor. Both poses shrink
+     this surface instead of enlarging a rasterized 200px thumbnail. */
   position: absolute;
-  bottom: -15px;
-  height: 27px;
-  width: 18px;
-  border-top: 12px solid #a8aa9b;
-  border-radius: 0 0 4px 4px;
-  background: #997f73;
+  left: 0;
+  bottom: 0;
+  display: block;
+  pointer-events: none;
+  width: 648px;
+  max-width: none;
+  height: auto;
+  border-radius: 58px;
+  transform-origin: left bottom;
+  transform: scale(0.3086419753);
+  box-shadow: 0 6px 0 #bec4c0, 0 13px 0 #647268, 23px 39px 45px #0004;
+  transition:
+    transform 0.55s cubic-bezier(0.2, 0.75, 0.2, 1),
+    box-shadow 0.55s;
+}
+/* Keep the link's footprint on the table so lifting the image cannot cause
+   a hover/leave loop when the pointer is near the bottom of the resting card. */
+.desk-devcard:hover img,
+.desk-devcard:focus-visible img {
+  transform: translate3d(0, -140px, 130px) rotateZ(9deg)
+    rotateX(var(--devcard-facing)) scale(0.5092592593);
+  box-shadow: 0 6px 0 #bec4c0, 0 12px 0 #647268, 36px 64px 64px #0006;
 }
 .desk-phone {
   position: absolute;
@@ -472,6 +501,7 @@ body {
     9px 19px 17px #0005;
 }
 .phone-screen {
+  display: block;
   height: 100%;
   background: #242f29;
   border-radius: 15px;
@@ -497,6 +527,47 @@ body {
   font-size: 13px;
   margin-top: 16px;
 }
+.music-phone {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.music-phone:hover, .music-phone:focus-visible {
+  transform: translateZ(25px) rotateZ(9deg);
+  box-shadow: 2px 5px 0 #3d463d, 12px 25px 22px #0006;
+}
+.music-phone .phone-screen > span { font-size: 8px; letter-spacing: 0.04em; }
+.music-phone .phone-screen > i { display: flex; justify-content: center; margin: 17px auto 12px; }
+.music-phone .phone-screen b { display: block; font-size: 18px; }
+.music-phone small { display: block; font-size: 8px; margin-top: 5px; }
+.music-phone .phone-play { display: flex; align-items: center; justify-content: center; margin: 16px auto 12px; color: #f2d4a0; }
+.music-phone .phone-caption { opacity: 0.65; }
+.music-shortcut { display: none; }
+.music-phone .phone-play { border: 0; background: #d7aa7a20; border-radius: 50%; padding: 10px; width: 44px; height: 44px; min-height: 44px; flex-shrink: 0; }
+.music-phone-playing, .music-phone-playing:hover, .music-phone-playing:focus-within { width: 260px; height: 435px; top: 300px; right: 140px; transform: translateZ(90px) rotateZ(0deg); }
+.music-phone-playing .phone-screen { position: relative; display: flex; flex-direction: column; padding: 14px 9px 20px; }
+.music-phone-playing .phone-screen > span, .music-phone-playing .phone-screen > b { flex-shrink: 0; }
+.music-phone-playing .phone-screen > b { margin: 14px 0; }
+.phone-stop { position: absolute; top: 3px; right: 3px; display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #ffffff14; color: #d7dfbf; }
+.music-phone .phone-lyrics { position: relative; height: 215px; overflow: auto; margin: 0 0 12px; text-align: left; scrollbar-width: none; overscroll-behavior: contain; }
+.music-phone-playing .phone-lyrics { flex: 1 1 0; height: auto; min-height: 0; }
+.phone-lyrics::-webkit-scrollbar { display: none; }
+.phone-lyrics button { display: block; width: 100%; padding: 8px 3px 20px; border: 0; background: transparent; color: #8b9787; font-size: 16px; line-height: 1.5; text-align: left; transition: color 0.2s; }
+.phone-lyrics button span { display: block; margin-bottom: 5px; }
+.phone-lyrics button .lyric-word { display: inline; margin: 0; }
+.phone-lyrics .lyric-active .lyric-word { background: linear-gradient(90deg, #f9edcf var(--word-progress), #8b9787 var(--word-progress)); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.phone-lyrics button.lyric-active { color: #f9edcf; font-weight: 650; }
+.phone-lyrics button.lyric-past { color: #73806f; }
+.music-phone .phone-seek { display: block; width: 100%; height: 16px; flex-shrink: 0; accent-color: #e4b67d; cursor: pointer; }
+.music-phone .phone-time { display: flex; flex-shrink: 0; justify-content: space-between; margin: 3px 0; font: 9px ui-monospace, monospace; color: #b0bca2; }
+.music-phone-playing .phone-play { margin: 8px auto; padding: 6px; }
+.music-phone .phone-error { display: block; font-size: 9px; margin-top: 5px; }
+@media (max-width: 699px) {
+  [data-camera="focus"] .music-phone { visibility: hidden; }
+  .music-shortcut { display: flex; align-items: center; gap: 9px; position: fixed; right: 16px; bottom: 16px; z-index: 70; min-height: 44px; padding: 10px 15px; border-radius: 999px; border: 1px solid var(--desk-rule); background: var(--desk-panel); color: var(--desk-ui); box-shadow: 0 5px 20px #0003; }
+  .music-phone-mobile, .music-phone-mobile:hover, .music-phone-mobile:focus-within { position: fixed; top: auto; bottom: 75px; right: 16px; z-index: 80; transform: none; width: min(260px, calc(100vw - 32px)); max-height: calc(100svh - 100px); overflow: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .music-phone { transition: none; } }
 .desk-note {
   position: absolute;
   left: 1370px;
@@ -1950,6 +2021,9 @@ html[lang="vi"] .paper-content h3 {
 
 /* One sheet at a time on phones; retain the same book and camera. */
 @media (max-width: 699px) {
+  [data-camera="focus"] .desk-devcard {
+    visibility: hidden;
+  }
   .desk-glasses,
   .desk-paperclip,
   .desk-card {
@@ -2183,6 +2257,8 @@ html[lang="vi"] .paper-content h3 {
 .is-reading .desk-book-target,
 .is-reading .wood-table,
 .is-reading .desk-props,
+.is-reading .desk-devcard,
+.is-reading .desk-phone,
 .is-reading .scene-heading,
 .is-reading .book-cover,
 .is-reading .book-gutter,
@@ -2274,7 +2350,8 @@ html[lang="vi"] .paper-content h3 {
   .folio-book,
   .book-cover,
   .page-block-left,
-  .folio-book .book-spread > .paper-left {
+  .folio-book .book-spread > .paper-left,
+  .desk-devcard img {
     transition: none !important;
   }
   .curved-turn {

@@ -14,6 +14,20 @@ Implemented in the existing Next.js repository, following the owner's selected [
 
 ## Responsive and accessible behavior
 
+### Audio phone (2026-10-30)
+
+The desk phone plays the owner-supplied MP3 at `/music/happy.mp3` only after Play. Its screen expands to display scrolling lyrics. The owner's replacement SRT has 75 cues; an offline forced-alignment pass against the MP3 creates 476 word timings across 74 lyric lines in `/music/happy.words.json`. Each word fills progressively using the actual audio clock (updates capped around 30fps only while playing). Line-level SRT remains a fallback. Pause, seeking, clicking a cue and stopping/resetting are supported. The audio element stays mounted when the phone moves between the desk and mobile screen, so resizing does not restart playback. No YouTube iframe is used. The mobile Happy control opens or stops the same phone.
+
+`bun run test:lyrics` passes six checks for parsing, interval boundaries, seeking backwards, gaps, word fill and complete source text/timing coverage. In the production browser, the MP3 plays (240.62839 seconds), all 476 words load, and a partial word fill was verified at 8.5 seconds (80.95%). Playback/pause and returning to zero were checked with no browser errors. Earlier phone checks cover mobile resizing without restarting playback and Stop resetting to zero. Build/type validation passes; first-load JavaScript is 195 kB. Alignment is automatic and may need local timing adjustments; see `public/music/SOURCE.md`. [Word highlighting](ux-audit/desk/music-word-highlight.png).
+
+### daily.dev card (2026-10-30)
+
+Hover hit-target fix (2026-11-04): transparent pointer planes cover the complete resting footprint and the lifted card surface; the native-resolution image is visual-only for pointer events. Browser hit tests passed at the top, middle and bottom of both poses. Entering the top of the card with the pointer triggered the lift, and keyboard focus still works. Build/type validation passes. [Updated card](ux-audit/desk/devcard-hover-hitarea.png).
+
+The owner's live [daily.dev Dev Card](https://daily.dev/langdev) replaces the pencil below the coffee. Hover or keyboard focus raises it in 3D, enlarges it 1.65× and turns it toward the camera, with a deeper shadow and layered card edge. The link keeps its resting footprint so the lifted image does not cause hover/leave oscillation. Clicking opens the profile in a new tab. Reduced motion removes the transition; the card is hidden in reading/no-JavaScript views and while the mobile camera focuses on the book.
+
+The image surface is laid out at its native 648×914 resolution, then scaled down for both poses, avoiding enlargement of a composited 200px thumbnail. The resting link retains its 200px footprint via an explicit aspect ratio. The remote PNG loaded successfully in the production browser; its layout width and natural width were both confirmed as 648px. The expanded state was checked with keyboard focus: the complete card fits inside the scene at the default desktop viewport (about 304×426 displayed pixels). Build/type validation passes; eight smoke checks passed during the card integration. [Expanded card after the sharpness fix](ux-audit/desk/daily-dev-card-lift.png).
+
 ### Closing hinge revision (2026-10-30)
 
 The back cover and right paper block now keep fixed widths of 448px and 430px. The left paper block and visible left leaf rotate around the spine with the front cover, using the same one-second easing, instead of changing the width of the base. Reading view removes these transforms; the extra left block is hidden below 700px, and reduced motion disables the hinge transition.
