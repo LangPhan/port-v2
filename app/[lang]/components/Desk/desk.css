@@ -157,19 +157,28 @@ body {
   isolation: isolate;
 }
 .scene-vignette {
+  --vignette-strength: 65%;
   position: absolute;
   z-index: 2;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse at 50% 46%,
-    transparent 27%,
-    var(--desk-room) 82%
-  );
-  opacity: 0.65;
+  /* Match the room at both clipped edges, including after the camera zooms. */
+  background:
+    linear-gradient(
+      to bottom,
+      var(--desk-room),
+      transparent 16%,
+      transparent 84%,
+      var(--desk-room)
+    ),
+    radial-gradient(
+      ellipse at 50% 46%,
+      transparent 27%,
+      color-mix(in srgb, var(--desk-room) var(--vignette-strength), transparent) 82%
+    );
 }
 [data-camera="focus"] .scene-vignette {
-  opacity: 0.12;
+  --vignette-strength: 12%;
 }
 .camera-world {
   opacity: 0;
